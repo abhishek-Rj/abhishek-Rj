@@ -32,11 +32,10 @@ const techIconsRow2 = [
 
 import { BentoGrid } from '../components/BentoGrid';
 import { BentoCard } from '../components/BentoCard';
-import { useTheme } from '../contexts/ThemeContext';
+// Removed unused useTheme
 
-function App() {
+function Home() {
   const [youtubeData, setYoutubeData] = useState<any>(null);
-  const { toggleTheme, nextThemeColor } = useTheme();
 
   useEffect(() => {
     const fetchMusic = async () => {
@@ -58,182 +57,144 @@ function App() {
     fetchMusic();
   }, []);
   return (
-    <div className="min-h-screen relative overflow-hidden text-zinc-300 font-supply p-4 md:p-8 lg:p-12">
-      {/* Background Accent Glow */}
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/8 rounded-full blur-[120px] pointer-events-none -z-10" />
-
-      <div className="w-full max-w-[900px] mx-auto space-y-12">
-        {/* Header Navigation */}
-        <header className="flex justify-between items-center py-4">
-          <div className="text-xl font-bold text-white tracking-widest uppercase">
-            A.Raj
+    <BentoGrid>
+      {/* Hero / Bio Card */}
+      <BentoCard className="row-span-2 md:col-span-2 md:row-span-2 p-8 flex flex-col justify-between group">
+        <div>
+          <div className="w-16 h-16 rounded-full bg-zinc-800 border border-white/10 overflow-hidden mb-6 filter grayscale">
+            <img src="/pfp.jpg" alt="Profile" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
           </div>
-          <nav className="flex items-center gap-6 text-sm">
-            <a href="#" className="hover:text-white transition-colors duration-300">Home</a>
-            <a href="#" className="hover:text-white transition-colors duration-300">Work</a>
-            <a href="#" className="hover:text-white transition-colors duration-300">About</a>
-            <a href="https://www.dropbox.com/scl/fi/0j6kossvhwj3634d5ubbs/Resume-Abhishek-Raj.pdf?rlkey=5pq5o15fw2e0sby87pwm7qnhq&st=sao9hfnb&dl=0" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">Resume</a>
-            <button onClick={toggleTheme} className="w-10 h-10 rounded-full bg-[#1c1c1c] border border-white/10 flex items-center justify-center hover:bg-[#2a2a2a] transition-colors relative group">
-              <span className="sr-only">Toggle Theme</span>
-              <div
-                className="w-4 h-4 rounded-full border border-white/20 transition-colors duration-500"
-                style={{ backgroundColor: nextThemeColor === '#0a0a0a' ? 'white' : nextThemeColor }}
-              />
-            </button>
-          </nav>
-        </header>
-
-        <main>
-          <BentoGrid>
-            {/* Hero / Bio Card */}
-            <BentoCard className="row-span-2 md:col-span-2 md:row-span-2 p-8 flex flex-col justify-between group">
-              <div>
-                <div className="w-16 h-16 rounded-full bg-zinc-800 border border-white/10 overflow-hidden mb-6 filter grayscale">
-                  <img src="/pfp.jpg" alt="Profile" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                </div>
-                <h1 className="text-4xl md:text-5xl font-bold text-white group-hover:text-[var(--invert-text)] transition-colors mb-4 tracking-tight">
-                  Hi, I'm Abhishek Raj.
-                </h1>
-                <p className="text-zinc-400 group-hover:text-[var(--invert-text)] opacity-90 transition-colors text-lg leading-relaxed max-w-md">
-                  Developer who enjoys Linux, exploring tech, and turning random ideas into working projects. Also occasionally gets distracted building games.
-                </p>
-              </div>
-              <div className="mt-8 flex flex-wrap items-center gap-3 text-sm text-zinc-500 group-hover:text-[var(--invert-text)] opacity-90 transition-colors">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)] animate-pulse" />
-                  Available for new opportunities
-                </div>
-              </div>
-            </BentoCard>
-
-            {/* GitHub Stats Card */}
-            <BentoCard className="md:col-span-2 p-6 flex items-center justify-center relative overflow-hidden group" glowColor="rgba(255,255,255,0.05)">
-              <a href="https://github.com/abhishek-Rj" target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-20"></a>
-              <ArrowUpRight className="absolute top-6 right-6 w-6 h-6 text-zinc-500 group-hover:text-[var(--invert-text)] transition-colors z-10" />
-              <Github className="w-16 h-16 text-white group-hover:text-[var(--invert-text)] group-hover:scale-110 transition-all duration-300 z-10" />
-            </BentoCard>
-
-            {/* LinkedIn Card */}
-            <BentoCard className="bg-[#0A66C2]/10 hover:bg-[#0A66C2]/20 border-[#0A66C2]/20 p-6 flex items-center justify-center group" glowColor="rgba(10, 102, 194, 0.2)">
-              <a href="https://www.linkedin.com/in/abhishek-raj-7371bb214/" target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-20"></a>
-              <ArrowUpRight className="absolute top-6 right-6 w-6 h-6 text-[#0A66C2]/50 group-hover:text-[var(--invert-text)] transition-colors z-10" />
-              <Linkedin className="w-16 h-16 text-[#0A66C2] group-hover:scale-110 transition-all duration-300 z-10" />
-            </BentoCard>
-
-            {/* X (Twitter) Card */}
-            <BentoCard className="bg-black/50 p-6 flex items-center justify-center group" glowColor="rgba(255, 255, 255, 0.1)">
-              <a href="https://x.com/abhishekRj_" target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-20"></a>
-              <ArrowUpRight className="absolute top-6 right-6 w-6 h-6 text-zinc-500 group-hover:text-[var(--invert-text)] transition-colors z-10" />
-              <Twitter className="w-16 h-16 text-white group-hover:text-[var(--invert-text)] group-hover:scale-110 transition-all duration-300 z-10" />
-            </BentoCard>
-
-            {/* Latest Project or Post */}
-            <BentoCard className="md:col-span-2 p-[2px] border-transparent bg-[var(--invert-bg)] rounded-3xl group transition-colors duration-500" glowColor="rgba(255,255,255,0)">
-              <div className="w-full h-full bg-[#1c1c1c] group-hover:bg-transparent rounded-[22px] p-6 flex flex-col justify-between transition-colors">
-                <div className="flex justify-between items-start">
-                  <div className="px-3 py-1 rounded-full bg-white/10 group-hover:bg-[var(--invert-text)]/10 text-xs font-medium text-white group-hover:text-[var(--invert-text)] transition-colors backdrop-blur-md">
-                    Latest Post
-                  </div>
-                  <ArrowUpRight className="w-5 h-5 text-zinc-500 group-hover:text-[var(--invert-text)] transition-colors" />
-                </div>
-                <div className="mt-8">
-                  <h3 className="text-2xl font-bold text-white group-hover:text-[var(--invert-text)] transition-colors mb-2">Building scalable interactive UIs with React</h3>
-                  <p className="text-zinc-400 group-hover:text-[var(--invert-text)] opacity-90 transition-colors text-sm line-clamp-2">A deep dive into performance optimization techniques for modern web applications using React Server Components.</p>
-                </div>
-              </div>
-            </BentoCard>
-
-            {/* Spotify / Music Card */}
-            <BentoCard className="p-0 overflow-hidden group border-transparent" glowColor="rgba(255, 255, 255, 0.1)">
-              {youtubeData ? (
-                <a
-                  href={`https://www.youtube.com/watch?v=${youtubeData.id.videoId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full h-full relative block"
-                >
-                  <img
-                    src={youtubeData.snippet.thumbnails.high.url}
-                    alt={youtubeData.snippet.title}
-                    className="w-full h-full object-cover scale-[1.35] group-hover:scale-[1.45] filter grayscale group-hover:grayscale-0 transition-all duration-700"
-                  />
-                  {/* Subtle gradient overlay to make text readable */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-white/90 group-hover:via-white/50 transition-colors duration-300" />
-
-                  <div className="absolute bottom-4 left-4 right-4 z-10 flex flex-col items-start">
-                    <Music className="w-5 h-5 text-white group-hover:text-[var(--invert-text)] transition-colors mb-2 animate-[bounce_3s_infinite]" />
-                    <h3 className="text-white group-hover:text-[var(--invert-text)] transition-colors font-bold text-sm line-clamp-1 mb-0.5" dangerouslySetInnerHTML={{ __html: youtubeData.snippet.title }}></h3>
-                    <p className="text-xs text-zinc-300 group-hover:text-zinc-700 transition-colors uppercase tracking-wider font-semibold">Currently Listening</p>
-                  </div>
-                </a>
-              ) : (
-                <div className="w-full h-full p-6 flex flex-col justify-center items-center text-center">
-                  <Music className="w-10 h-10 text-white group-hover:text-[var(--invert-text)] transition-colors mb-4 animate-[bounce_3s_infinite]" />
-                  <h3 className="text-white group-hover:text-[var(--invert-text)] transition-colors font-bold mb-1">Loading...</h3>
-                </div>
-              )}
-            </BentoCard>
-
-            {/* Tech Stack Visual */}
-            <BentoCard disableHoverInversion className="flex flex-col justify-center gap-8 bg-[#1c1c1c]/30 overflow-hidden relative">
-
-              {/* Row 1 (Scrolling Left) */}
-              <div className="flex whitespace-nowrap animate-marquee items-center w-max">
-                {[...techIconsRow1, ...techIconsRow1, ...techIconsRow1, ...techIconsRow1].map((tech, i) => (
-                  <div key={`r1-${i}`} className="flex flex-col items-center justify-center gap-3 opacity-50 hover:opacity-100 transition-opacity pr-12">
-                    <tech.Icon className="w-10 h-10 text-white transition-colors" />
-                  </div>
-                ))}
-              </div>
-
-              {/* Row 2 (Scrolling Right) */}
-              <div className="flex whitespace-nowrap animate-marquee items-center w-max" style={{ animationDirection: 'reverse', animationDuration: '35s' }}>
-                {[...techIconsRow2, ...techIconsRow2, ...techIconsRow2, ...techIconsRow2].map((tech, i) => (
-                  <div key={`r2-${i}`} className="flex flex-col items-center justify-center gap-3 opacity-50 hover:opacity-100 transition-opacity pr-12">
-                    <tech.Icon className="w-10 h-10 text-white transition-colors" />
-                  </div>
-                ))}
-              </div>
-            </BentoCard>
-
-            {/* Contact Form Card */}
-            <BentoCard className="row-span-2 md:row-span-1 md:col-span-2 lg:col-span-4 p-8 flex flex-col md:flex-row gap-8 items-center bg-zinc-900/50">
-              <div className="flex-1 space-y-4">
-                <h2 className="text-3xl font-bold text-white group-hover:text-[var(--invert-text)] transition-colors flex items-center gap-3">
-                  Let's create together
-                  <span className="inline-block hover:animate-[spin_1s_ease-in-out_infinite] origin-bottom-right">👋</span>
-                </h2>
-                <p className="text-zinc-400 group-hover:text-[var(--invert-text)] opacity-90 transition-colors max-w-md">
-                  Have a project in mind or just want to say hi? Drop a message and I'll get back to you as soon as possible.
-                </p>
-              </div>
-              <div className="flex-1 w-full max-w-sm space-y-3">
-                <input
-                  type="email"
-                  placeholder="name@example.com"
-                  className="w-full bg-[#1c1c1c] border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all font-supply text-sm"
-                />
-                <button className="w-full bg-white text-black font-bold rounded-xl px-4 py-3 flex items-center justify-center gap-2 group-hover:bg-[var(--invert-text)] group-hover:text-[var(--invert-bg)] transition-colors cursor-pointer text-sm">
-                  <Send className="w-4 h-4" />
-                  Send Message
-                </button>
-              </div>
-            </BentoCard>
-
-          </BentoGrid>
-        </main>
-
-        <footer className="py-8 mt-4 border-t border-white/10 flex justify-between items-center text-sm text-white/70">
-          <p>© 2026 Abhishek Raj</p>
-          <div className="flex items-center gap-4">
-            <a href="https://github.com/abhishek-Rj" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Github className="w-5 h-5" /></a>
-            <a href="https://www.linkedin.com/in/abhishek-raj-7371bb214/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Linkedin className="w-5 h-5" /></a>
-            <a href="https://x.com/abhishekRj_" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Twitter className="w-5 h-5" /></a>
+          <h1 className="text-4xl md:text-5xl font-bold text-white group-hover:text-[var(--invert-text)] transition-colors mb-4 tracking-tight">
+            Hi, I'm Abhishek Raj.
+          </h1>
+          <p className="text-zinc-400 group-hover:text-[var(--invert-text)] opacity-90 transition-colors text-lg leading-relaxed max-w-md">
+            Developer who enjoys Linux, exploring tech, and turning random ideas into working projects. Also occasionally gets distracted building games.
+          </p>
+        </div>
+        <div className="mt-8 flex flex-wrap items-center gap-3 text-sm text-zinc-500 group-hover:text-[var(--invert-text)] opacity-90 transition-colors">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)] animate-pulse" />
+            Available for new opportunities
           </div>
-        </footer>
-      </div >
-    </div >
+        </div>
+      </BentoCard>
+
+      {/* GitHub Stats Card */}
+      <BentoCard className="md:col-span-2 p-6 flex items-center justify-center relative overflow-hidden group" glowColor="rgba(255,255,255,0.05)">
+        <a href="https://github.com/abhishek-Rj" target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-20"></a>
+        <ArrowUpRight className="absolute top-6 right-6 w-6 h-6 text-zinc-500 group-hover:text-[var(--invert-text)] transition-colors z-10" />
+        <Github className="w-16 h-16 text-white group-hover:text-[var(--invert-text)] group-hover:scale-110 transition-all duration-300 z-10" />
+      </BentoCard>
+
+      {/* LinkedIn Card */}
+      <BentoCard className="bg-[#0A66C2]/10 hover:bg-[#0A66C2]/20 border-[#0A66C2]/20 p-6 flex items-center justify-center group" glowColor="rgba(10, 102, 194, 0.2)">
+        <a href="https://www.linkedin.com/in/abhishek-raj-7371bb214/" target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-20"></a>
+        <ArrowUpRight className="absolute top-6 right-6 w-6 h-6 text-[#0A66C2]/50 group-hover:text-[var(--invert-text)] transition-colors z-10" />
+        <Linkedin className="w-16 h-16 text-[#0A66C2] group-hover:scale-110 transition-all duration-300 z-10" />
+      </BentoCard>
+
+      {/* X (Twitter) Card */}
+      <BentoCard className="bg-black/50 p-6 flex items-center justify-center group" glowColor="rgba(255, 255, 255, 0.1)">
+        <a href="https://x.com/abhishekRj_" target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-20"></a>
+        <ArrowUpRight className="absolute top-6 right-6 w-6 h-6 text-zinc-500 group-hover:text-[var(--invert-text)] transition-colors z-10" />
+        <Twitter className="w-16 h-16 text-white group-hover:text-[var(--invert-text)] group-hover:scale-110 transition-all duration-300 z-10" />
+      </BentoCard>
+
+      {/* Latest Project or Post */}
+      <BentoCard className="md:col-span-2 p-[2px] border-transparent bg-[var(--invert-bg)] rounded-3xl group transition-colors duration-500" glowColor="rgba(255,255,255,0)">
+        <div className="w-full h-full bg-[#1c1c1c] group-hover:bg-transparent rounded-[22px] p-6 flex flex-col justify-between transition-colors">
+          <div className="flex justify-between items-start">
+            <div className="px-3 py-1 rounded-full bg-white/10 group-hover:bg-[var(--invert-text)]/10 text-xs font-medium text-white group-hover:text-[var(--invert-text)] transition-colors backdrop-blur-md">
+              Latest Post
+            </div>
+            <ArrowUpRight className="w-5 h-5 text-zinc-500 group-hover:text-[var(--invert-text)] transition-colors" />
+          </div>
+          <div className="mt-8">
+            <h3 className="text-2xl font-bold text-white group-hover:text-[var(--invert-text)] transition-colors mb-2">Building scalable interactive UIs with React</h3>
+            <p className="text-zinc-400 group-hover:text-[var(--invert-text)] opacity-90 transition-colors text-sm line-clamp-2">A deep dive into performance optimization techniques for modern web applications using React Server Components.</p>
+          </div>
+        </div>
+      </BentoCard>
+
+      {/* Spotify / Music Card */}
+      <BentoCard className="p-0 overflow-hidden group border-transparent" glowColor="rgba(255, 255, 255, 0.1)">
+        {youtubeData ? (
+          <a
+            href={`https://www.youtube.com/watch?v=${youtubeData.id.videoId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full h-full relative block"
+          >
+            <img
+              src={youtubeData.snippet.thumbnails.high.url}
+              alt={youtubeData.snippet.title}
+              className="w-full h-full object-cover scale-[1.35] group-hover:scale-[1.45] filter grayscale group-hover:grayscale-0 transition-all duration-700"
+            />
+            {/* Subtle gradient overlay to make text readable */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-white/90 group-hover:via-white/50 transition-colors duration-300" />
+
+            <div className="absolute bottom-4 left-4 right-4 z-10 flex flex-col items-start">
+              <Music className="w-5 h-5 text-white group-hover:text-[var(--invert-text)] transition-colors mb-2 animate-[bounce_3s_infinite]" />
+              <h3 className="text-white group-hover:text-[var(--invert-text)] transition-colors font-bold text-sm line-clamp-1 mb-0.5" dangerouslySetInnerHTML={{ __html: youtubeData.snippet.title }}></h3>
+              <p className="text-xs text-zinc-300 group-hover:text-zinc-700 transition-colors uppercase tracking-wider font-semibold">Currently Listening</p>
+            </div>
+          </a>
+        ) : (
+          <div className="w-full h-full p-6 flex flex-col justify-center items-center text-center">
+            <Music className="w-10 h-10 text-white group-hover:text-[var(--invert-text)] transition-colors mb-4 animate-[bounce_3s_infinite]" />
+            <h3 className="text-white group-hover:text-[var(--invert-text)] transition-colors font-bold mb-1">Loading...</h3>
+          </div>
+        )}
+      </BentoCard>
+
+      {/* Tech Stack Visual */}
+      <BentoCard disableHoverInversion className="flex flex-col justify-center gap-8 bg-[#1c1c1c]/30 overflow-hidden relative">
+
+        {/* Row 1 (Scrolling Left) */}
+        <div className="flex whitespace-nowrap animate-marquee items-center w-max">
+          {[...techIconsRow1, ...techIconsRow1, ...techIconsRow1, ...techIconsRow1].map((tech, i) => (
+            <div key={`r1-${i}`} className="flex flex-col items-center justify-center gap-3 opacity-50 hover:opacity-100 transition-opacity pr-12">
+              <tech.Icon className="w-10 h-10 text-white transition-colors" />
+            </div>
+          ))}
+        </div>
+
+        {/* Row 2 (Scrolling Right) */}
+        <div className="flex whitespace-nowrap animate-marquee items-center w-max" style={{ animationDirection: 'reverse', animationDuration: '35s' }}>
+          {[...techIconsRow2, ...techIconsRow2, ...techIconsRow2, ...techIconsRow2].map((tech, i) => (
+            <div key={`r2-${i}`} className="flex flex-col items-center justify-center gap-3 opacity-50 hover:opacity-100 transition-opacity pr-12">
+              <tech.Icon className="w-10 h-10 text-white transition-colors" />
+            </div>
+          ))}
+        </div>
+      </BentoCard>
+
+      {/* Contact Form Card */}
+      <BentoCard className="row-span-2 md:row-span-1 md:col-span-2 lg:col-span-4 p-8 flex flex-col md:flex-row gap-8 items-center bg-zinc-900/50">
+        <div className="flex-1 space-y-4">
+          <h2 className="text-3xl font-bold text-white group-hover:text-[var(--invert-text)] transition-colors flex items-center gap-3">
+            Let's create together
+            <span className="inline-block hover:animate-[spin_1s_ease-in-out_infinite] origin-bottom-right">👋</span>
+          </h2>
+          <p className="text-zinc-400 group-hover:text-[var(--invert-text)] opacity-90 transition-colors max-w-md">
+            Have a project in mind or just want to say hi? Drop a message and I'll get back to you as soon as possible.
+          </p>
+        </div>
+        <div className="flex-1 w-full max-w-sm space-y-3">
+          <input
+            type="email"
+            placeholder="name@example.com"
+            className="w-full bg-[#1c1c1c] border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all font-supply text-sm"
+          />
+          <button className="w-full bg-white text-black font-bold rounded-xl px-4 py-3 flex items-center justify-center gap-2 group-hover:bg-[var(--invert-text)] group-hover:text-[var(--invert-bg)] transition-colors cursor-pointer text-sm">
+            <Send className="w-4 h-4" />
+            Send Message
+          </button>
+        </div>
+      </BentoCard>
+
+    </BentoGrid>
   );
 }
 
-export default App;
+export default Home;
