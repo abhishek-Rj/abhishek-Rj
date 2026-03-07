@@ -1,101 +1,82 @@
-import { Terminal, X, GitBranch, FolderClosed, Check } from 'lucide-react';
+import { BentoCard } from '../components/BentoCard';
+import { Link } from 'react-router-dom';
 
 export default function About() {
     return (
         <div className="w-full h-full flex flex-col pt-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            {/* Terminal Window Wrapper */}
-            <div className="bg-black/40 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col flex-grow font-mono">
+            <div className="w-full max-w-5xl mx-auto">
 
-                {/* Neovim Bufferline (Top) */}
-                <div className="flex bg-black/60 text-zinc-400 text-xs select-none">
-                    {/* Active Buffer */}
-                    <div className="px-4 py-2 bg-white/5 text-[var(--invert-bg)] border-t-2 border-[var(--invert-bg)] flex items-center gap-2">
-                        <Terminal size={14} className="text-[var(--invert-bg)] opacity-80" />
-                        <span className="italic font-semibold">about.md</span>
-                        <X size={14} className="text-zinc-500 hover:text-[var(--invert-text)] hover:bg-[var(--invert-bg)] rounded-sm cursor-pointer transition-all" />
-                    </div>
+                {/* Wikipedia Standard Header */}
+                <div className="mb-8 border-b border-white/10 pb-4">
+                    <h1 className="text-4xl md:text-5xl font-inter text-white tracking-tight">Abhishek Raj</h1>
+                    <p className="text-sm text-zinc-500 mt-2 italic">From A.Raj, the free portfolio</p>
                 </div>
 
-                {/* Editor Area */}
-                <div className="flex flex-1 p-2 sm:p-4 text-zinc-300 text-sm sm:text-base selection:bg-white/20 overflow-y-auto">
+                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
 
-                    {/* Relative Line Numbers */}
-                    <div className="flex flex-col text-zinc-600 text-right pr-4 select-none mr-2 border-r border-white/5 min-w-[2.5rem]">
-                        <span className="text-[var(--invert-bg)] font-bold">1</span>
-                        {[...Array(20)].map((_, i) => (
-                            <span key={i} className="leading-relaxed opacity-60">{i + 1}</span>
-                        ))}
+                    {/* Main Reading Column */}
+                    <div className="flex-1 order-2 lg:order-1 font-inter text-md leading-relaxed text-zinc-300 space-y-6">
+
+                        <p>
+                            <strong className="text-white">I am Abhishek Raj</strong>, an engineering student completing my undergraduate degree in Computer Science at Chandigarh University.
+                        </p>
+
+                        <p>
+                            The moment I first got my hands on a computer, I was hooked on the world of technology. Driven by a long list of questions, I discovered open-source software and Linux. Ever since then, there has been no looking back.
+                        </p>
+
+                        <div className="mt-10 mb-4 border-b border-white/10 pb-2">
+                            <h2 className="text-2xl font-inter text-white">Career & Projects</h2>
+                        </div>
+
+                        <p>
+                            I have architected and developed scalable systems across different tech stacks. My work spans from creating AI-driven data analysis tools designed for the e-commerce sector to building interactive, pixelated 2D virtual environments that support concurrent real-time voice and video communication across distributed rooms<sup className="text-[var(--invert-bg)] text-xs ml-0.5"><Link to="/work" className="hover:underline">[1]</Link></sup>.
+                        </p>
+
+                        <p>
+                            I am also fond of retro arcade designs and enjoy creating immersive 3D simulations utilizing custom engines and C++, alongside rendering classic arcade games (which is why the majority of my personal work revolves around them)<sup className="text-[var(--invert-bg)] text-xs ml-0.5"><Link to="/work" className="hover:underline">[2]</Link></sup>. My professional experience also includes building high-conversion frontend engineering suites, managing scalable PostgreSQL infrastructure for aggregation platforms, and training bash-proficient AI agents in Linux environments.
+                        </p>
+
                     </div>
 
-                    {/* Buffer Content */}
-                    <div className="flex flex-col flex-1 gap-6 pb-4">
-                        <p className="leading-relaxed">
-                            Growing up around computers and the internet, I was always curious about how things actually worked behind the screen. That curiosity slowly turned into building things myself — <span className="text-[var(--invert-bg)] font-semibold">breaking systems, fixing them, and learning a little more every time</span>.
-                        </p>
-
-                        <p className="leading-relaxed">
-                            I’m currently pursuing a Computer Science degree at <span className="text-[var(--invert-bg)] opacity-90">Chandigarh University</span>, where most of my time goes into building projects across <span className="text-[var(--invert-bg)] italic">web development, real-time systems, and game development</span>. I enjoy working with technologies like TypeScript, Node.js, React, and cloud tools, while also experimenting with Linux systems and backend infrastructure.
-                        </p>
-
-                        <p className="leading-relaxed">
-                            Some of the things I’ve built include multiplayer environments, machine-learning powered tools, and even a racing game using <span className="text-[var(--invert-bg)] font-bold">Unreal Engine</span>. I’m especially interested in systems that combine multiple areas of tech — real-time communication, distributed systems, security tooling, or interactive environments.
-                        </p>
-
-                        <p className="leading-relaxed">
-                            Outside of projects, I spend a lot of time exploring <span className="text-[var(--invert-bg)] font-semibold">Linux</span>, solving cybersecurity challenges, contributing to open source, and generally going down random technical rabbit holes on the internet.
-                        </p>
-
-                        {/* Snippet Block */}
-                        <div className="mt-6 pt-4">
-                            <div className="text-zinc-500 mb-2 italic">{'// current_focus.json'}</div>
-                            <div className="text-zinc-300">
-                                <span className="text-white/50">{'{'}</span><br />
-                                &nbsp;&nbsp;<span className="text-white/90">"status"</span><span className="text-white/50">:</span> <span className="text-[var(--invert-bg)]">"Learning & Building"</span><span className="text-white/50">,</span><br />
-                                &nbsp;&nbsp;<span className="text-white/90">"interests"</span><span className="text-white/50">:</span> <span className="text-white/50">[</span><span className="text-[var(--invert-bg)]">"Systems"</span><span className="text-white/50">,</span> <span className="text-[var(--invert-bg)]">"Web"</span><span className="text-white/50">,</span> <span className="text-[var(--invert-bg)]">"Games"</span><span className="text-white/50">,</span> <span className="text-[var(--invert-bg)]">"Cloud"</span><span className="text-white/50">,</span> <span className="text-[var(--invert-bg)]">"Cybersecurity"</span><span className="text-white/50">]</span><br />
-                                <span className="text-white/50">{'}'}</span>
+                    {/* Wikipedia Infobox (Sidebar) */}
+                    <div className="w-full lg:w-[300px] order-1 lg:order-2 shrink-0">
+                        <BentoCard className="p-0 overflow-hidden bg-[#1c1c1c]/50 hover:bg-[#1c1c1c]/80 transition-colors border-white/10" glowColor="rgba(255,255,255,0.05)" disableHoverInversion>
+                            {/* Infobox Header */}
+                            <div className="bg-black/40 p-4 border-b border-white/10 text-center">
+                                <h3 className="text-xl font-bold text-white tracking-tight">Abhishek Raj</h3>
                             </div>
-                        </div>
 
-                        {/* Empty lines tildes */}
-                        <div className="flex flex-col text-[var(--invert-bg)] opacity-30 mt-8">
-                            <span>~</span>
-                            <span>~</span>
-                            <span>~</span>
-                        </div>
+                            {/* Infobox Image Placeholder */}
+                            <div className="w-full h-[220px] bg-[#111] flex items-center justify-center border-b border-white/10 p-4">
+                                <img src="/pfp.jpg" alt="Abhishek Raj" className="w-32 h-32 rounded-full border-4 border-white/5 opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all duration-500" />
+                            </div>
+
+                            {/* Infobox Data */}
+                            <div className="p-5 text-sm space-y-4">
+                                <div className="grid grid-cols-[100px_1fr] gap-3 border-b border-white/5 pb-3">
+                                    <span className="font-bold text-zinc-400">Occupation</span>
+                                    <span className="text-zinc-300">Build Stuff</span>
+                                </div>
+                                <div className="grid grid-cols-[100px_1fr] gap-3 border-b border-white/5 pb-3">
+                                    <span className="font-bold text-zinc-400">Pronouns</span>
+                                    <span className="text-zinc-300">he/him</span>
+                                </div>
+                                <div className="grid grid-cols-3 gap-2">
+                                    <span className="font-bold text-zinc-400">Focus Areas</span>
+                                    <span className="col-span-2 text-zinc-300">
+                                        <ul className="list-disc pl-4 space-y-1">
+                                            <li>Distributed Systems</li>
+                                            <li>Real-time Networks</li>
+                                            <li>Low-level Engines</li>
+                                        </ul>
+                                    </span>
+                                </div>
+                            </div>
+                        </BentoCard>
                     </div>
+
                 </div>
-
-                {/* Lualine (Bottom Status Bar) */}
-                <div className="flex items-center justify-between text-xs bg-black/60 text-zinc-400 select-none">
-                    <div className="flex items-center">
-                        <div className="bg-[var(--invert-bg)] text-[var(--invert-text)] font-bold px-3 py-1 flex items-center gap-2 transition-colors">
-                            NORMAL
-                        </div>
-                        <div className="bg-white/10 text-[var(--invert-bg)] px-3 py-1 flex items-center gap-1 transition-colors">
-                            <GitBranch size={12} />
-                            <span>main</span>
-                        </div>
-                        <div className="px-3 py-1 flex items-center gap-1">
-                            <FolderClosed size={12} className="opacity-70" />
-                            <span className="italic text-zinc-300">src/pages/about.md</span>
-                            <span className="text-[var(--invert-bg)] ml-1 font-bold">[+]</span>
-                        </div>
-                    </div>
-
-                    <div className="hidden sm:flex items-center">
-                        <div className="px-3 py-1 flex items-center gap-1">
-                            <Check size={12} className="text-[var(--invert-bg)]" />
-                            <span>Prettier</span>
-                        </div>
-                        <div className="px-3 py-1 border-l border-white/10">utf-8</div>
-                        <div className="px-3 py-1 border-l border-white/10 text-white/90">markdown</div>
-                        <div className="bg-white/10 text-zinc-300 px-3 py-1">100%</div>
-                        <div className="bg-[var(--invert-bg)] text-[var(--invert-text)] font-bold px-3 py-1 transition-colors">
-                            1:1
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     );

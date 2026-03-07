@@ -3,6 +3,7 @@ import { Github, Twitter, Linkedin } from 'lucide-react';
 import { Header } from './components/Header';
 import Home from './pages/Home';
 import About from './pages/About';
+import Work from './pages/Work';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/work" element={<Work />} />
           </Routes>
         </main>
 
