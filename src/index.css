@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: Supply Mono;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/PPSupplyMono-Regular.otf") format("opentype")
+}
+
+@theme {
+  --font-supply: "Supply Mono", monospace;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: #ffffff;
+  font-family: "Supply Mono", monospace;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
