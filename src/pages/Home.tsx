@@ -36,7 +36,42 @@ import { BentoCard } from '../components/BentoCard';
 
 function Home() {
   const [youtubeData, setYoutubeData] = useState<any>(null);
-  const [email, setEmail] = useState<string>()
+  const [email, setEmail] = useState<string>('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleContactSubmit = async () => {
+    if (!email || isSubmitting) return;
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const res = await fetch("https://backend.abhishekr2077.workers.dev/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setSubmitStatus('success');
+        setEmail('');
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => {
+        setSubmitStatus((prev) => (prev === 'success' || prev === 'error' ? 'idle' : prev));
+      }, 3000);
+    }
+  };
 
   useEffect(() => {
     const fetchMusic = async () => {
@@ -189,19 +224,34 @@ function Home() {
             placeholder="name@example.com"
             className="w-full bg-[#1c1c1c] border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all font-supply text-sm"
           />
-          <button onClick={() => {
-            fetch("https://backend.abhishekr2077.workers.dev/contact", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                email,
-              }),
-            });
-          }} className="w-full bg-white text-black font-bold rounded-xl px-4 py-3 flex items-center justify-center gap-2 group-hover:bg-[var(--invert-text)] group-hover:text-[var(--invert-bg)] transition-colors cursor-pointer text-sm">
-            <Send className="w-4 h-4" />
-            Send Message
+          <button
+            onClick={handleContactSubmit}
+            disabled={isSubmitting}
+            className={`w-full font-bold rounded-xl px-4 py-3 flex items-center justify-center gap-2 transition-colors text-sm
+              ${submitStatus === 'success'
+                ? 'bg-green-500 text-white'
+                : submitStatus === 'error'
+                  ? 'bg-red-500 text-white'
+                  : 'bg-white text-black group-hover:bg-[var(--invert-text)] group-hover:text-[var(--invert-bg)] cursor-pointer'
+              }
+              ${isSubmitting ? 'opacity-80 cursor-not-allowed bg-white text-black' : ''}
+            `}
+          >
+            {isSubmitting ? (
+              <>
+                <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                Sending...
+              </>
+            ) : submitStatus === 'success' ? (
+              'Sent!'
+            ) : submitStatus === 'error' ? (
+              'Error! Try Again'
+            ) : (
+              <>
+                <Send className="w-4 h-4" />
+                Send
+              </>
+            )}
           </button>
         </div>
       </BentoCard>

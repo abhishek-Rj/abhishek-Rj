@@ -17,7 +17,9 @@ import { Resend } from "resend";
 import "dotenv/config";
 
 const app = new Hono();
-app.use(cors())
+app.use(cors({
+  origin: `https://abhishek-rj.vercel.app`
+}))
 
 app.get("/", (c) => {
   return c.text("Hello World");
