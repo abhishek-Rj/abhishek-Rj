@@ -22,7 +22,8 @@ export default function About() {
                         </p>
 
                         <p>
-                            The moment I first got my hands on a computer, I was hooked on the world of technology. Driven by a long list of questions, I discovered open-source software and Linux. Ever since then, there has been no looking back.
+
+                            My interest in technology began the moment I got my hands on my first computer. With the curiosity for Linux and open-source software, I discovered that software is more than just code—it’s a collaborative effort to solve problems. Since then, I’ve been focused on breaking and building things to understand how they work.
                         </p>
 
                         <div className="mt-10 mb-4 border-b border-white/10 pb-2">
