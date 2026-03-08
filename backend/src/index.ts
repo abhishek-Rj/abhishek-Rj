@@ -13,8 +13,14 @@
 
 import { Hono } from "hono";
 import { cors } from "hono/cors"
+import * as z from "zod";
 import { Resend } from "resend";
 import "dotenv/config";
+
+const schema = z.object({
+  email: z.email(),
+  message: z.string().optional()
+})
 
 const app = new Hono();
 app.use(cors({
@@ -28,12 +34,16 @@ app.get("/", (c) => {
 app.post("/contact", async (c) => {
   const resend_api = process.env.RESEND_API;
   const resend = new Resend(resend_api);
-  const { email, message }: { email: string, message?: string } = await c.req.json();
+  const body = await c.req.json();
+  const parsed = schema.safeParse(body)
+  if (!parsed.success) {
+    return c.json({ error: parsed.error })
+  }
   const { data, error } = await resend.emails.send({
     from: "onboarding@resend.dev",
     to: "abhishekr2077@gmail.com",
     subject: "Someone texted you",
-    text: `From: ${email}\n\nMessage:\n${message ?? "No message provided"}`
+    text: `From: ${parsed.data.email}\n\nMessage:\n${parsed.data.message ?? "No message provided"}`
   });
 
   if (error) {

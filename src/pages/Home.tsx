@@ -43,6 +43,13 @@ function Home() {
   const handleContactSubmit = async () => {
     if (!email || isSubmitting) return;
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setSubmitStatus('error');
+      setTimeout(() => setSubmitStatus('idle'), 3000);
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
