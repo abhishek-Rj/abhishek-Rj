@@ -36,6 +36,7 @@ import { BentoCard } from '../components/BentoCard';
 
 function Home() {
   const [youtubeData, setYoutubeData] = useState<any>(null);
+  const [email, setEmail] = useState<string>()
 
   useEffect(() => {
     const fetchMusic = async () => {
@@ -183,10 +184,22 @@ function Home() {
         <div className="flex-1 w-full max-w-sm space-y-3">
           <input
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="name@example.com"
             className="w-full bg-[#1c1c1c] border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all font-supply text-sm"
           />
-          <button className="w-full bg-white text-black font-bold rounded-xl px-4 py-3 flex items-center justify-center gap-2 group-hover:bg-[var(--invert-text)] group-hover:text-[var(--invert-bg)] transition-colors cursor-pointer text-sm">
+          <button onClick={() => {
+            fetch("https://backend.abhishekr2077.workers.dev/contact", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                email,
+              }),
+            });
+          }} className="w-full bg-white text-black font-bold rounded-xl px-4 py-3 flex items-center justify-center gap-2 group-hover:bg-[var(--invert-text)] group-hover:text-[var(--invert-bg)] transition-colors cursor-pointer text-sm">
             <Send className="w-4 h-4" />
             Send Message
           </button>
