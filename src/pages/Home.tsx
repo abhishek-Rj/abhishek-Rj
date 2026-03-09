@@ -145,18 +145,20 @@ function Home() {
 
       {/* Latest Project or Post */}
       <BentoCard className="md:col-span-2 p-[2px] border-transparent bg-[var(--invert-bg)] rounded-3xl group transition-colors duration-500" glowColor="rgba(255,255,255,0)">
-        <div className="w-full h-full bg-[#1c1c1c] group-hover:bg-transparent rounded-[22px] p-6 flex flex-col justify-between transition-colors">
-          <div className="flex justify-between items-start">
-            <div className="px-3 py-1 rounded-full bg-white/10 group-hover:bg-[var(--invert-text)]/10 text-xs font-medium text-white group-hover:text-[var(--invert-text)] transition-colors backdrop-blur-md">
-              Latest Post
+        <a href="https://app.daily.dev/posts/M8FlKpNmU" target="_blank" rel="noopener noreferrer" className="block w-full h-full cursor-pointer">
+          <div className="w-full h-full bg-[#1c1c1c] group-hover:bg-transparent rounded-[22px] p-6 flex flex-col justify-between transition-colors">
+            <div className="flex justify-between items-start mb-4">
+              <div className="px-3 py-1 rounded-full bg-white/10 group-hover:bg-[var(--invert-text)]/10 text-xs font-medium text-white group-hover:text-[var(--invert-text)] transition-colors backdrop-blur-md">
+                Latest Post
+              </div>
+              <ArrowUpRight className="w-5 h-5 text-zinc-500 group-hover:text-[var(--invert-text)] transition-colors" />
             </div>
-            <ArrowUpRight className="w-5 h-5 text-zinc-500 group-hover:text-[var(--invert-text)] transition-colors" />
+            <div className="mt-auto">
+              <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[var(--invert-text)] transition-colors mb-2 line-clamp-2">Understanding QEMU: Architecture, KVM Integration, and How It Differs from Traditional Hypervisors</h3>
+              <p className="text-zinc-400 group-hover:text-[var(--invert-text)] opacity-90 transition-colors text-sm line-clamp-2 leading-relaxed">QEMU is an open-source virtualizer and emulator that allows you to run multiple operating systems and software designed for specific hardware.</p>
+            </div>
           </div>
-          <div className="mt-8">
-            <h3 className="text-2xl font-bold text-white group-hover:text-[var(--invert-text)] transition-colors mb-2">Building scalable interactive UIs with React</h3>
-            <p className="text-zinc-400 group-hover:text-[var(--invert-text)] opacity-90 transition-colors text-sm line-clamp-2">A deep dive into performance optimization techniques for modern web applications using React Server Components.</p>
-          </div>
-        </div>
+        </a>
       </BentoCard>
 
       {/* Spotify / Music Card */}
