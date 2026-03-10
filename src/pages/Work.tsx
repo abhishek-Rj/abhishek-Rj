@@ -4,7 +4,7 @@ import { BentoCard } from '../components/BentoCard';
 
 const experiences = [
     {
-        title: "Founder / Builder",
+        title: "Founding Engineer",
         company: "Wiranium (Unexploit)",
         time: "7 Months",
         link: "wiranium.com",
