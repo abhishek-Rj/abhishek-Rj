@@ -13,7 +13,7 @@ const experiences = [
         stack: ["Remix.js", "GraphQL", "Postgres", "Webhooks", "Python", "LLMs"],
     },
     {
-        title: "Bash Engineer",
+        title: "Bash Engineer (Contract)",
         company: "AfterQuery",
         time: "6 Months",
         icon: <TerminalSquare className="w-5 h-5" />,
