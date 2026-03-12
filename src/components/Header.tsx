@@ -26,7 +26,7 @@ export function Header() {
                     <Link to="/" className={`${isActive('/') ? 'text-white font-bold' : 'text-zinc-400 hover:text-white'} transition-colors duration-300`}>Home</Link>
                     <Link to="/work" className={`${isActive('/work') ? 'text-white font-bold' : 'text-zinc-400 hover:text-white'} transition-colors duration-300`}>Work</Link>
                     <Link to="/about" className={`${isActive('/about') ? 'text-white font-bold' : 'text-zinc-400 hover:text-white'} transition-colors duration-300`}>About</Link>
-                    <a href="https://www.dropbox.com/scl/fi/0j6kossvhwj3634d5ubbs/Resume-Abhishek-Raj.pdf?rlkey=5pq5o15fw2e0sby87pwm7qnhq&st=sao9hfnb&dl=0" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors duration-300">Resume</a>
+                    <a href="https://www.dropbox.com/scl/fi/gfreh7ydl7ndfc8xg52nm/Abhishek_Raj_Resume_One_Page.pdf?rlkey=zja3u6nffpamsxvfph53fodsv&st=o1ig4ktz&dl=0" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors duration-300">Resume</a>
                     <button onClick={toggleTheme} className="w-10 h-10 rounded-full bg-[#1c1c1c] border border-white/10 flex items-center justify-center hover:bg-[#2a2a2a] transition-colors relative group">
                         <span className="sr-only">Toggle Theme</span>
                         <div
