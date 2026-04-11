@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import {
   Briefcase,
   Code,
@@ -33,6 +34,14 @@ const experiences = [
 ];
 
 const projects = [
+  {
+    title: "VAWD Image",
+    link: "vawd.abhishekraj.xyz",
+    icon: <Globe className="w-5 h-5" />,
+    description:
+      "A next-generation image search engine built on a microservice architecture. It leverages a RAG pipeline to understand and search images based on their visual content rather than text tags, delivering highly accurate results.",
+    stack: ["Next.js", "Go", "Kafka", "Amazon Bedrock", "Python", "Pinecone"],
+  },
   {
     title: "Web World",
     link: "webworld.abhishekraj.xyz",
@@ -70,7 +79,7 @@ const projects = [
     link: "",
     icon: <Code className="w-5 h-5" />,
     description:
-      "A blazingly fast, ephemeral clipboard tool for sharing quick snippets and links between devices.",
+      "A blazingly fast, ephemeral clipboard tool for sharing quick text snippets, links, and images between devices.",
     stack: ["Next.js", "Redis"],
   },
   {
@@ -78,13 +87,26 @@ const projects = [
     link: "",
     icon: <Gamepad2 className="w-5 h-5" />,
     description:
-      "Engineered low-level recreations of classic arcade games like Pong and Alien Wars using raw C++ rendering loops.",
+      "Low-level recreations of classic arcade games like Pong and Alien Wars using raw C++ rendering loops.",
     stack: ["C++", "SFML"],
   },
 ];
 
 export default function Work() {
   const [activeId, setActiveId] = useState<string>("");
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 300);
+    }
+  }, [location.hash]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

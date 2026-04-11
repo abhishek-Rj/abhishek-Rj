@@ -19,18 +19,26 @@ export default function About() {
           {/* Main Reading Column */}
           <div className="flex-1 order-2 lg:order-1 font-inter text-md leading-relaxed text-zinc-300 space-y-6">
             <p>
-              <strong className="text-white">I am Abhishek Raj</strong>, an
-              engineering student completing my undergraduate degree in Computer
-              Science at Chandigarh University.
+              I&apos;m Abhishek - I break things to understand them, then build
+              them back better.
             </p>
 
             <p>
-              My interest in technology began the moment I got my hands on my
-              first computer. With the curiosity for Linux and open-source
-              software, I discovered that software is more than just code it’s a
-              collaborative effort to solve problems. Since then, I’ve been
-              focused on breaking and building things to understand how they
-              work.
+              It started with Linux. Not because anyone told me to, but because
+              I needed to know what was happening underneath. That itch never
+              really went away. It just scaled - from tinkering with open-source
+              configs at 2am to architecting distributed systems with Kafka,
+              building semantic search engines, and shipping production code
+              that real users depend on. The obsession isn&apos;t the stack,
+              it&apos;s the depth. Digging things to why it works the way it
+              does is kinda fun.
+            </p>
+
+            <p>
+              When I&apos;m not doing that, I&apos;m probably down a rabbit hole
+              I didn&apos;t plan to enter - retro arcade design, 3D simulations
+              in C++, or figuring out why some obscure system call behaves the
+              way it does.
             </p>
 
             <div className="mt-10 mb-4 border-b border-white/10 pb-2">
@@ -40,13 +48,19 @@ export default function About() {
             </div>
 
             <p>
-              I have architected and developed scalable systems across different
-              tech stacks. My work spans from creating AI-driven data analysis
-              tools designed for the e-commerce sector to building interactive,
-              pixelated 2D virtual environments that support concurrent
-              real-time voice and video communication across distributed rooms
+              I&apos;ve built across the full stack - and I mean that literally,
+              not as a buzzword.
+            </p>
+
+            <p>
+              On the AI side, I built Vawd, an image sharing platform where
+              search works the way your brain does - describe what you&apos;re
+              looking for and it finds it, no tags, no filenames, no manual
+              work. It runs a CLIP-based embedding pipeline, a RAG retrieval
+              layer, and a Kafka-backed ingestion system that keeps the whole
+              thing fault-tolerant and fast
               <sup className="text-[var(--invert-bg)] text-xs ml-0.5">
-                <Link to="/work" className="hover:underline">
+                <Link to="/work#proj-0" className="hover:underline">
                   [1]
                 </Link>
               </sup>
@@ -54,19 +68,38 @@ export default function About() {
             </p>
 
             <p>
-              I am also fond of retro arcade designs and enjoy creating
-              immersive 3D simulations utilizing custom engines and C++,
-              alongside rendering classic arcade games (which is why the
-              majority of my personal work revolves around them)
+              I&apos;ve built Web World, a real-time 2D multiplayer environment
+              where people actually hang out - choose an avatar, explore a
+              pixelated world, hop into proximity voice chats or pull friends
+              into a private meeting room. The kind of thing that&apos;s
+              absurdly fun to build because every layer is a different hard
+              problem
               <sup className="text-[var(--invert-bg)] text-xs ml-0.5">
-                <Link to="/work" className="hover:underline">
+                <Link to="/work#proj-1" className="hover:underline">
                   [2]
                 </Link>
               </sup>
-              . My professional experience also includes building
-              high-conversion frontend engineering suites, managing scalable
-              PostgreSQL infrastructure for aggregation platforms, and training
-              bash-proficient AI agents in Linux environments.
+              .
+            </p>
+
+            <p>
+              Professionally, I&apos;ve trained AI agents at AfterQuery
+              (YC-backed) - not writing prompts, but engineering verifiable
+              tasks that teach agents how to actually operate in Linux
+              environments. I&apos;ve shipped a fraud detection plugin for
+              e-commerce merchants at Wiranium, and built a location-aware
+              promotions platform serving real users across Europe
+              <sup className="text-[var(--invert-bg)] text-xs ml-0.5">
+                <Link to="/work#exp-0" className="hover:underline">
+                  [3]
+                </Link>
+              </sup>
+              .
+            </p>
+
+            <p>
+              The common thread? I like systems that have real stakes, real
+              users, and real complexity - and I like owning them end to end.
             </p>
           </div>
 

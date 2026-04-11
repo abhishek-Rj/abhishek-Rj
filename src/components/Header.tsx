@@ -46,7 +46,7 @@ export function Header() {
             About
           </Link>
           <a
-            href="https://www.dropbox.com/scl/fi/xzl4ixf70tgkrxa9rromz/abomination.pdf?rlkey=mbla131luhkczwav6feb1iry8&e=1&st=59z2tql9&dl=0"
+            href="https://www.dropbox.com/scl/fi/oe7g9q585z8t1n6fohfn8/abhishek-Rj.pdf?rlkey=il7kntg5hfszjtcovhppfmwt5&st=tixgxkem&dl=0"
             target="_blank"
             rel="noopener noreferrer"
             className="text-zinc-400 hover:text-white transition-colors duration-300"
