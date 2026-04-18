@@ -1,6 +1,6 @@
 ### Hi, I'm Abhishek Raj 👋
 
-Developer who enjoys Linux, exploring tech, and turning random ideas into working projects. Currently exploring the intersection of systems, web, and game development.
+Developer who enjoys Linux, exploring tech, and turning random ideas into working projects.
 
 #### Connect
 
