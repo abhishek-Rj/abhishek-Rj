@@ -1,7 +1,5 @@
 ### Hi, I'm Abhishek Raj 👋
 
-Developer who enjoys Linux, exploring tech, and turning random ideas into working projects.
-
 #### Connect
 
 - **Portfolio:** [abhishek-Rj](https://abhishekraj.xyz/)
