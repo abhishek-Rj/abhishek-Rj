@@ -1,14 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import {
-  Server,
-  TerminalSquare,
-  Globe,
-  Database,
-  Terminal,
-  Code,
-  Briefcase,
-} from "lucide-react";
+import { Globe, Database, Terminal, Code, Briefcase } from "lucide-react";
 import { FaAws } from "react-icons/fa";
 import {
   SiNextdotjs,

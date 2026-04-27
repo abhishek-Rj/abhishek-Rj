@@ -16,34 +16,186 @@ import {
   SiNodedotjs,
   SiFigma,
 } from "react-icons/si";
-import { Database, Gamepad2, Globe, Terminal, Zap, Monitor, Code, Briefcase } from "lucide-react";
+import {
+  Database,
+  Gamepad2,
+  Globe,
+  Terminal,
+  Zap,
+  Monitor,
+  Code,
+} from "lucide-react";
 
 const getTechStackProps = (tech: string) => {
   switch (tech) {
-    case "Next.js": return { icon: <SiNextdotjs size={12} />, color: "text-white", border: "border-white/20", bg: "bg-white/5" };
-    case "Go": return { icon: <SiGo size={12} />, color: "text-[#00ADD8]", border: "border-[#00ADD8]/30", bg: "bg-[#00ADD8]/10" };
-    case "Kafka": return { icon: <SiApachekafka size={12} />, color: "text-white", border: "border-white/20", bg: "bg-white/5" };
-    case "Amazon Bedrock": return { icon: <Database size={12} />, color: "text-[#FF9900]", border: "border-[#FF9900]/30", bg: "bg-[#FF9900]/10" };
-    case "Python": return { icon: <SiPython size={12} />, color: "text-[#3776AB]", border: "border-[#3776AB]/30", bg: "bg-[#3776AB]/10" };
-    case "Pinecone": return { icon: <Globe size={12} />, color: "text-white", border: "border-white/20", bg: "bg-white/5" };
-    case "Vite": return { icon: <SiVite size={12} />, color: "text-[#646CFF]", border: "border-[#646CFF]/30", bg: "bg-[#646CFF]/10" };
-    case "Phaser": return { icon: <Gamepad2 size={12} />, color: "text-white", border: "border-white/20", bg: "bg-white/5" };
-    case "Node.js": return { icon: <SiNodedotjs size={12} />, color: "text-[#339933]", border: "border-[#339933]/30", bg: "bg-[#339933]/10" };
-    case "WebSockets": return { icon: <Zap size={12} />, color: "text-[#FF9900]", border: "border-[#FF9900]/30", bg: "bg-[#FF9900]/10" };
-    case "Mediasoup": return { icon: <Globe size={12} />, color: "text-white", border: "border-white/20", bg: "bg-white/5" };
-    case "React": return { icon: <SiReact size={12} />, color: "text-[#61DAFB]", border: "border-[#61DAFB]/30", bg: "bg-[#61DAFB]/10" };
-    case "Prisma": return { icon: <SiPrisma size={12} />, color: "text-white", border: "border-white/20", bg: "bg-white/5" };
-    case "Postgres": return { icon: <SiPostgresql size={12} />, color: "text-[#4169E1]", border: "border-[#4169E1]/30", bg: "bg-[#4169E1]/10" };
-    case "DevOps": return { icon: <Terminal size={12} />, color: "text-white", border: "border-white/20", bg: "bg-white/5" };
-    case "AWS": return { icon: <FaAws size={12} />, color: "text-[#FF9900]", border: "border-[#FF9900]/30", bg: "bg-[#FF9900]/10" };
-    case "Unreal Engine": return { icon: <SiUnrealengine size={12} />, color: "text-white", border: "border-white/20", bg: "bg-white/5" };
-    case "Blender": return { icon: <SiBlender size={12} />, color: "text-[#F5792A]", border: "border-[#F5792A]/30", bg: "bg-[#F5792A]/10" };
-    case "C++": return { icon: <SiCplusplus size={12} />, color: "text-[#00599C]", border: "border-[#00599C]/30", bg: "bg-[#00599C]/10" };
-    case "Frontend": return { icon: <Monitor size={12} />, color: "text-white", border: "border-white/20", bg: "bg-white/5" };
-    case "UI/UX": return { icon: <SiFigma size={12} />, color: "text-[#F24E1E]", border: "border-[#F24E1E]/30", bg: "bg-[#F24E1E]/10" };
-    case "Redis": return { icon: <SiRedis size={12} />, color: "text-[#DC382D]", border: "border-[#DC382D]/30", bg: "bg-[#DC382D]/10" };
-    case "SFML": return { icon: <Gamepad2 size={12} />, color: "text-[#8CC445]", border: "border-[#8CC445]/30", bg: "bg-[#8CC445]/10" };
-    default: return { icon: <Code size={12} />, color: "text-white", border: "border-white/20", bg: "bg-white/5" };
+    case "Next.js":
+      return {
+        icon: <SiNextdotjs size={12} />,
+        color: "text-white",
+        border: "border-white/20",
+        bg: "bg-white/5",
+      };
+    case "Go":
+      return {
+        icon: <SiGo size={12} />,
+        color: "text-[#00ADD8]",
+        border: "border-[#00ADD8]/30",
+        bg: "bg-[#00ADD8]/10",
+      };
+    case "Kafka":
+      return {
+        icon: <SiApachekafka size={12} />,
+        color: "text-white",
+        border: "border-white/20",
+        bg: "bg-white/5",
+      };
+    case "Amazon Bedrock":
+      return {
+        icon: <Database size={12} />,
+        color: "text-[#FF9900]",
+        border: "border-[#FF9900]/30",
+        bg: "bg-[#FF9900]/10",
+      };
+    case "Python":
+      return {
+        icon: <SiPython size={12} />,
+        color: "text-[#3776AB]",
+        border: "border-[#3776AB]/30",
+        bg: "bg-[#3776AB]/10",
+      };
+    case "Pinecone":
+      return {
+        icon: <Globe size={12} />,
+        color: "text-white",
+        border: "border-white/20",
+        bg: "bg-white/5",
+      };
+    case "Vite":
+      return {
+        icon: <SiVite size={12} />,
+        color: "text-[#646CFF]",
+        border: "border-[#646CFF]/30",
+        bg: "bg-[#646CFF]/10",
+      };
+    case "Phaser":
+      return {
+        icon: <Gamepad2 size={12} />,
+        color: "text-white",
+        border: "border-white/20",
+        bg: "bg-white/5",
+      };
+    case "Node.js":
+      return {
+        icon: <SiNodedotjs size={12} />,
+        color: "text-[#339933]",
+        border: "border-[#339933]/30",
+        bg: "bg-[#339933]/10",
+      };
+    case "WebSockets":
+      return {
+        icon: <Zap size={12} />,
+        color: "text-[#FF9900]",
+        border: "border-[#FF9900]/30",
+        bg: "bg-[#FF9900]/10",
+      };
+    case "Mediasoup":
+      return {
+        icon: <Globe size={12} />,
+        color: "text-white",
+        border: "border-white/20",
+        bg: "bg-white/5",
+      };
+    case "React":
+      return {
+        icon: <SiReact size={12} />,
+        color: "text-[#61DAFB]",
+        border: "border-[#61DAFB]/30",
+        bg: "bg-[#61DAFB]/10",
+      };
+    case "Prisma":
+      return {
+        icon: <SiPrisma size={12} />,
+        color: "text-white",
+        border: "border-white/20",
+        bg: "bg-white/5",
+      };
+    case "Postgres":
+      return {
+        icon: <SiPostgresql size={12} />,
+        color: "text-[#4169E1]",
+        border: "border-[#4169E1]/30",
+        bg: "bg-[#4169E1]/10",
+      };
+    case "DevOps":
+      return {
+        icon: <Terminal size={12} />,
+        color: "text-white",
+        border: "border-white/20",
+        bg: "bg-white/5",
+      };
+    case "AWS":
+      return {
+        icon: <FaAws size={12} />,
+        color: "text-[#FF9900]",
+        border: "border-[#FF9900]/30",
+        bg: "bg-[#FF9900]/10",
+      };
+    case "Unreal Engine":
+      return {
+        icon: <SiUnrealengine size={12} />,
+        color: "text-white",
+        border: "border-white/20",
+        bg: "bg-white/5",
+      };
+    case "Blender":
+      return {
+        icon: <SiBlender size={12} />,
+        color: "text-[#F5792A]",
+        border: "border-[#F5792A]/30",
+        bg: "bg-[#F5792A]/10",
+      };
+    case "C++":
+      return {
+        icon: <SiCplusplus size={12} />,
+        color: "text-[#00599C]",
+        border: "border-[#00599C]/30",
+        bg: "bg-[#00599C]/10",
+      };
+    case "Frontend":
+      return {
+        icon: <Monitor size={12} />,
+        color: "text-white",
+        border: "border-white/20",
+        bg: "bg-white/5",
+      };
+    case "UI/UX":
+      return {
+        icon: <SiFigma size={12} />,
+        color: "text-[#F24E1E]",
+        border: "border-[#F24E1E]/30",
+        bg: "bg-[#F24E1E]/10",
+      };
+    case "Redis":
+      return {
+        icon: <SiRedis size={12} />,
+        color: "text-[#DC382D]",
+        border: "border-[#DC382D]/30",
+        bg: "bg-[#DC382D]/10",
+      };
+    case "SFML":
+      return {
+        icon: <Gamepad2 size={12} />,
+        color: "text-[#8CC445]",
+        border: "border-[#8CC445]/30",
+        bg: "bg-[#8CC445]/10",
+      };
+    default:
+      return {
+        icon: <Code size={12} />,
+        color: "text-white",
+        border: "border-white/20",
+        bg: "bg-white/5",
+      };
   }
 };
 
