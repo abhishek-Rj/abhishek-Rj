@@ -14,15 +14,29 @@ export function Header() {
   // Helper to determine if a link is active
   const isActive = (path: string) => location.pathname === path;
 
+  let headerTitle = "A.Raj";
+  if (location.pathname === "/experience") headerTitle = "Experience";
+  else if (location.pathname === "/projects") headerTitle = "Projects";
+
   return (
-    <header className="relative py-4 z-50">
+    <header className="relative px-6 py-4 z-50 bg-[var(--card-bg)] border border-[var(--line-color)] transition-colors duration-500">
+      {/* Solid backing to prevent lines from showing through */}
+      <div className="absolute inset-0 bg-[var(--card-bg)] pointer-events-none z-[-1] transition-colors duration-500" />
+
+      {/* Infinitely extending border lines */}
+      <div className="absolute inset-0 pointer-events-none z-[-2] *:bg-[var(--line-color)] *:transition-colors *:duration-500">
+        <div className="absolute top-[-1px] left-[-100vw] right-[-100vw] h-[1px]" />
+        <div className="absolute bottom-[-1px] left-[-100vw] right-[-100vw] h-[1px]" />
+        <div className="absolute top-[-100vh] bottom-[-100vh] left-[-1px] w-[1px]" />
+        <div className="absolute top-[-100vh] bottom-[-100vh] right-[-1px] w-[1px]" />
+      </div>
       <div className="flex justify-between items-center">
         <Link
           to="/"
           onClick={closeMenu}
           className="text-xl font-bold text-white tracking-widest uppercase z-50"
         >
-          A.Raj
+          {headerTitle}
         </Link>
 
         {/* Desktop Navigation */}
@@ -34,10 +48,16 @@ export function Header() {
             Home
           </Link>
           <Link
-            to="/work"
-            className={`${isActive("/work") ? "text-white font-bold" : "text-zinc-400 hover:text-white"} transition-colors duration-300`}
+            to="/experience"
+            className={`${isActive("/experience") ? "text-white font-bold" : "text-zinc-400 hover:text-white"} transition-colors duration-300`}
           >
-            Work
+            Experience
+          </Link>
+          <Link
+            to="/projects"
+            className={`${isActive("/projects") ? "text-white font-bold" : "text-zinc-400 hover:text-white"} transition-colors duration-300`}
+          >
+            Projects
           </Link>
           <Link
             to="/about"
@@ -101,11 +121,18 @@ export function Header() {
           Home
         </Link>
         <Link
-          to="/work"
+          to="/experience"
           onClick={closeMenu}
-          className={`${isActive("/work") ? "text-white font-bold" : "text-zinc-400 hover:text-white"} text-lg transition-colors`}
+          className={`${isActive("/experience") ? "text-white font-bold" : "text-zinc-400 hover:text-white"} text-lg transition-colors`}
         >
-          Work
+          Experience
+        </Link>
+        <Link
+          to="/projects"
+          onClick={closeMenu}
+          className={`${isActive("/projects") ? "text-white font-bold" : "text-zinc-400 hover:text-white"} text-lg transition-colors`}
+        >
+          Projects
         </Link>
         <Link
           to="/about"

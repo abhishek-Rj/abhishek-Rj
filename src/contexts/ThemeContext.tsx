@@ -3,11 +3,11 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 // Default black plus the 4 unique variants the user requested
 // Invert logic: Black turns white. Colorful dark themes turn into a bright pastel version of themselves.
 const THEMES = [
-    { bg: '#0a0a0a', invertBg: '#ffffff', invertText: '#0a0a0a' }, // Black -> White
-    { bg: '#3d1f1f', invertBg: '#fecaca', invertText: '#3d1f1f' }, // Dark Red -> Light Red
-    { bg: '#2b284a', invertBg: '#c7d2fe', invertText: '#2b284a' }, // Dark Indigo -> Light Indigo
-    { bg: '#284029', invertBg: '#bbf7d0', invertText: '#284029' }, // Dark Green -> Light Green
-    { bg: '#40391f', invertBg: '#fef08a', invertText: '#40391f' }, // Dark Yellow -> Light Yellow
+    { bg: '#0a0a0a', invertBg: '#ffffff', invertText: '#0a0a0a', cardBg: '#000000', lineBg: '#1c1c1c' },
+    { bg: '#3d1f1f', invertBg: '#fecaca', invertText: '#3d1f1f', cardBg: '#2e1010', lineBg: '#4d2a2a' },
+    { bg: '#2b284a', invertBg: '#c7d2fe', invertText: '#2b284a', cardBg: '#1c193b', lineBg: '#39365c' },
+    { bg: '#284029', invertBg: '#bbf7d0', invertText: '#284029', cardBg: '#19311a', lineBg: '#365237' },
+    { bg: '#40391f', invertBg: '#fef08a', invertText: '#40391f', cardBg: '#312a10', lineBg: '#4f472b' },
 ];
 
 interface ThemeContextType {
@@ -35,8 +35,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         document.body.style.backgroundColor = currentTheme.bg;
 
         // Expose CSS variables for dynamic hover inversions across the app
+        document.documentElement.style.setProperty('--bg-color', currentTheme.bg);
         document.documentElement.style.setProperty('--invert-bg', currentTheme.invertBg);
         document.documentElement.style.setProperty('--invert-text', currentTheme.invertText);
+        document.documentElement.style.setProperty('--card-bg', currentTheme.cardBg);
+        document.documentElement.style.setProperty('--line-color', currentTheme.lineBg);
     }, [currentTheme]);
 
     return (

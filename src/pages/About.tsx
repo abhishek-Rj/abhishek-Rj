@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function About() {
   return (
     <div className="w-full h-full flex flex-col pt-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <div className="w-full max-w-5xl mx-auto">
+      <div className="w-full max-w-5xl mx-auto px-6 md:px-8">
         {/* Wikipedia Standard Header */}
         <div className="mb-8 border-b border-white/10 pb-4">
           <h1 className="text-4xl md:text-5xl font-inter text-white tracking-tight">

@@ -142,13 +142,15 @@ function Home() {
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-white group-hover:text-[var(--invert-text)] transition-colors mb-4 tracking-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white group-hover:text-[var(--invert-text)] transition-colors mb-4 tracking-tighter leading-none">
             Hi, I'm Abhishek Raj.
           </h1>
-          <p className="text-zinc-400 group-hover:text-[var(--invert-text)] opacity-90 transition-colors text-lg leading-relaxed max-w-md">
-            Developer who enjoys Linux, exploring tech, and turning random ideas
-            into working projects. Also occasionally gets distracted building
-            games.
+          <p className="text-zinc-400 group-hover:text-[var(--invert-text)] opacity-90 transition-colors text-xs md:text-sm leading-relaxed tracking-wide text-justify">
+            Full stack by day, low level by night, breaking things in between.
+            I've shipped web apps, dabbled in cybersecurity, learning AI
+            systems, spent way too many hours writing games in C++ and Unreal
+            Engine. I just really like knowing how stuff works, all the way
+            down.
           </p>
         </div>
         <div className="mt-8 flex flex-wrap items-center gap-3 text-sm text-zinc-500 group-hover:text-[var(--invert-text)] opacity-90 transition-colors">
@@ -161,7 +163,7 @@ function Home() {
 
       {/* GitHub Stats Card */}
       <BentoCard
-        className="md:col-span-2 p-6 flex items-center justify-center relative overflow-hidden group"
+        className="md:col-span-2 p-6 flex items-center justify-center relative group"
         glowColor="rgba(255,255,255,0.05)"
       >
         <a
@@ -239,7 +241,7 @@ function Home() {
 
       {/* Spotify / Music Card */}
       <BentoCard
-        className="p-0 overflow-hidden group border-transparent"
+        className="p-0 group border-transparent"
         glowColor="rgba(255, 255, 255, 0.1)"
       >
         {youtubeData ? (
@@ -247,7 +249,7 @@ function Home() {
             href={`https://www.youtube.com/watch?v=${youtubeData.id.videoId}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full h-full relative block"
+            className="w-full h-full relative block overflow-hidden"
           >
             <img
               src={youtubeData.snippet.thumbnails.high.url}
@@ -261,7 +263,9 @@ function Home() {
               <Music className="w-5 h-5 text-white group-hover:text-[var(--invert-text)] transition-colors mb-2 animate-[bounce_3s_infinite]" />
               <h3
                 className="text-white group-hover:text-[var(--invert-text)] transition-colors font-bold text-sm line-clamp-1 mb-0.5"
-                dangerouslySetInnerHTML={{ __html: youtubeData.snippet.title }}
+                dangerouslySetInnerHTML={{
+                  __html: youtubeData.snippet.title,
+                }}
               ></h3>
               <p className="text-xs text-zinc-300 group-hover:text-zinc-700 transition-colors uppercase tracking-wider font-semibold">
                 Currently Listening
@@ -279,45 +283,47 @@ function Home() {
       </BentoCard>
 
       {/* Tech Stack Visual */}
-      <BentoCard
-        disableHoverInversion
-        className="flex flex-col justify-center gap-8 bg-[#1c1c1c]/30 overflow-hidden relative"
-      >
-        {/* Row 1 (Scrolling Left) */}
-        <div className="flex whitespace-nowrap animate-marquee items-center w-max">
-          {[
-            ...techIconsRow1,
-            ...techIconsRow1,
-            ...techIconsRow1,
-            ...techIconsRow1,
-          ].map((tech, i) => (
-            <div
-              key={`r1-${i}`}
-              className="flex flex-col items-center justify-center gap-3 opacity-50 hover:opacity-100 transition-opacity pr-12"
-            >
-              <tech.Icon className="w-10 h-10 text-white transition-colors" />
-            </div>
-          ))}
-        </div>
+      <BentoCard disableHoverInversion className="bg-[#1c1c1c]/30 relative p-0">
+        <div className="w-full h-full overflow-hidden flex flex-col justify-center gap-8 py-8">
+          {/* Row 1 (Scrolling Left) */}
+          <div className="flex whitespace-nowrap animate-marquee items-center w-max">
+            {[
+              ...techIconsRow1,
+              ...techIconsRow1,
+              ...techIconsRow1,
+              ...techIconsRow1,
+            ].map((tech, i) => (
+              <div
+                key={`r1-${i}`}
+                className="flex flex-col items-center justify-center gap-3 opacity-50 hover:opacity-100 transition-opacity pr-12"
+              >
+                <tech.Icon className="w-10 h-10 text-white transition-colors" />
+              </div>
+            ))}
+          </div>
 
-        {/* Row 2 (Scrolling Right) */}
-        <div
-          className="flex whitespace-nowrap animate-marquee items-center w-max"
-          style={{ animationDirection: "reverse", animationDuration: "35s" }}
-        >
-          {[
-            ...techIconsRow2,
-            ...techIconsRow2,
-            ...techIconsRow2,
-            ...techIconsRow2,
-          ].map((tech, i) => (
-            <div
-              key={`r2-${i}`}
-              className="flex flex-col items-center justify-center gap-3 opacity-50 hover:opacity-100 transition-opacity pr-12"
-            >
-              <tech.Icon className="w-10 h-10 text-white transition-colors" />
-            </div>
-          ))}
+          {/* Row 2 (Scrolling Right) */}
+          <div
+            className="flex whitespace-nowrap animate-marquee items-center w-max"
+            style={{
+              animationDirection: "reverse",
+              animationDuration: "35s",
+            }}
+          >
+            {[
+              ...techIconsRow2,
+              ...techIconsRow2,
+              ...techIconsRow2,
+              ...techIconsRow2,
+            ].map((tech, i) => (
+              <div
+                key={`r2-${i}`}
+                className="flex flex-col items-center justify-center gap-3 opacity-50 hover:opacity-100 transition-opacity pr-12"
+              >
+                <tech.Icon className="w-10 h-10 text-white transition-colors" />
+              </div>
+            ))}
+          </div>
         </div>
       </BentoCard>
 
