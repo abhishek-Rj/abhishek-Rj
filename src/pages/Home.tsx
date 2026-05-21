@@ -116,7 +116,7 @@ function Home() {
         if (!apiKey) return;
 
         const res = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=ice+slowed+zertal&key=${apiKey}`,
+          `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=『例外の方が多い規則』+-+Reigaino+Houga+Ooikisoku&key=${apiKey}`,
         );
         const data = await res.json();
 
