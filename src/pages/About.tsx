@@ -122,7 +122,7 @@ export default function About() {
                 <img
                   src="/pfp.jpg"
                   alt="Abhishek Raj"
-                  className="w-32 h-32 rounded-full border-4 border-white/5 opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all duration-500"
+                  className="w-32 h-32 rounded-full border-4 border-white/5 transition-all duration-500"
                 />
               </div>
 

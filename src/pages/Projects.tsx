@@ -15,6 +15,8 @@ import {
   SiRedis,
   SiNodedotjs,
   SiFigma,
+  SiRust,
+  SiSqlite,
 } from "react-icons/si";
 import {
   Database,
@@ -157,9 +159,9 @@ const getTechStackProps = (tech: string) => {
     case "C++":
       return {
         icon: <SiCplusplus size={12} />,
-        color: "text-[#00599C]",
-        border: "border-[#00599C]/30",
-        bg: "bg-[#00599C]/10",
+        color: "text-[#008CFF]",
+        border: "border-[#008CFF]/30",
+        bg: "bg-[#008CFF]/10",
       };
     case "Frontend":
       return {
@@ -189,6 +191,27 @@ const getTechStackProps = (tech: string) => {
         border: "border-[#8CC445]/30",
         bg: "bg-[#8CC445]/10",
       };
+    case "Rust":
+      return {
+        icon: <SiRust size={12} />,
+        color: "text-[#E57324]",
+        border: "border-[#E57324]/30",
+        bg: "bg-[#E57324]/10",
+      };
+    case "SQLite":
+      return {
+        icon: <SiSqlite size={12} />,
+        color: "text-[#3CC8FF]",
+        border: "border-[#3CC8FF]/30",
+        bg: "bg-[#3CC8FF]/10",
+      };
+    case "TUI":
+      return {
+        icon: <Terminal size={12} />,
+        color: "text-[#4AF626]",
+        border: "border-[#4AF626]/30",
+        bg: "bg-[#4AF626]/10",
+      };
     default:
       return {
         icon: <Code size={12} />,
@@ -200,6 +223,14 @@ const getTechStackProps = (tech: string) => {
 };
 
 const projects = [
+  {
+    title: "Russhx",
+    link: "github.com/abhishek-Rj/russhx",
+    icon: <Terminal className="w-5 h-5" />,
+    description:
+      "A terminal user interface (TUI) SSH server manager written in Rust. It securely organizes and enables quick access to local server credentials and SSH connections via a keyboard-first terminal vault, backed by a local SQLite database.",
+    stack: ["Rust", "SQLite", "TUI"],
+  },
   {
     title: "VAWD Image",
     link: "vawd.abhishekraj.xyz",

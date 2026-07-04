@@ -151,9 +151,9 @@ const getTechStackProps = (tech: string) => {
     case "C++":
       return {
         icon: <SiCplusplus size={12} />,
-        color: "text-[#00599C]",
-        border: "border-[#00599C]/30",
-        bg: "bg-[#00599C]/10",
+        color: "text-[#008CFF]",
+        border: "border-[#008CFF]/30",
+        bg: "bg-[#008CFF]/10",
       };
     case "Frontend":
       return {

@@ -135,7 +135,7 @@ function Home() {
             {/* Hero / Bio Card */}
             <BentoCard className="row-span-2 md:col-span-2 md:row-span-2 p-8 flex flex-col justify-between group">
                 <div>
-                    <div className="w-16 h-16 rounded-full bg-zinc-800 border border-white/10 overflow-hidden mb-6 filter grayscale">
+                    <div className="w-16 h-16 rounded-full bg-zinc-800 border border-white/10 overflow-hidden mb-6 filter">
                         <img
                             src="/pfp.jpg"
                             alt="Profile"
