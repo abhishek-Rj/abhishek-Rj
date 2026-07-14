@@ -116,7 +116,7 @@ function Home() {
                 if (!apiKey) return;
 
                 const res = await fetch(
-                    `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=zero+slowed+ZERTAL&key=${apiKey}`,
+                    `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=Kanye%20West%20Flashing%20Lights%20Alternate%20Intro%20prod.%20OCEVN&key=${apiKey}`,
                 );
                 const data = await res.json();
 
