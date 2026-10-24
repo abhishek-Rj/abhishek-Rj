@@ -26,6 +26,8 @@ import {
   Zap,
   Monitor,
   Code,
+  FileText,
+  GitMerge,
 } from "lucide-react";
 
 const getTechStackProps = (tech: string) => {
@@ -212,6 +214,13 @@ const getTechStackProps = (tech: string) => {
         border: "border-[#4AF626]/30",
         bg: "bg-[#4AF626]/10",
       };
+    case "CRDT":
+      return {
+        icon: <GitMerge size={12} />,
+        color: "text-[#A78BFA]",
+        border: "border-[#A78BFA]/30",
+        bg: "bg-[#A78BFA]/10",
+      };
     default:
       return {
         icon: <Code size={12} />,
@@ -223,6 +232,14 @@ const getTechStackProps = (tech: string) => {
 };
 
 const projects = [
+  {
+    title: "CollabNote",
+    link: "github.com/abhishek-Rj/collabnote",
+    icon: <FileText className="w-5 h-5" />,
+    description:
+      "A high-performance, real-time collaborative document editing platform with CRDT-based multi-user synchronization. Built with a concurrent Go (Gin & GORM) backend and a Next.js 16 frontend, featuring workspace management, debounced autosave, and granular role-based document permissions.",
+    stack: ["Next.js", "Go", "Postgres", "CRDT", "WebSockets"],
+  },
   {
     title: "Russhx",
     link: "github.com/abhishek-Rj/russhx",

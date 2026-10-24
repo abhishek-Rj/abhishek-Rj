@@ -66,7 +66,7 @@ export function Header() {
                         About
                     </Link>
                     <a
-                        href="https://www.dropbox.com/scl/fi/0zynp098f37yqirk7529d/portfolio.pdf?rlkey=xh4zmhc9x4bx0sj1rg84hqtm4&st=5d07e7us&dl=0"
+                        href="https://www.dropbox.com/scl/fi/k66yhnbs9ycbi23al7nmd/Abhishek-Raj.pdf?rlkey=o1t5ywm94rs3yhdtez8baxoey&st=09o6qe2n&e=1&dl=0"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-zinc-400 hover:text-white transition-colors duration-300"
@@ -146,7 +146,7 @@ export function Header() {
                     About
                 </Link>
                 <a
-                    href="https://www.dropbox.com/scl/fi/0zynp098f37yqirk7529d/portfolio.pdf?rlkey=xh4zmhc9x4bx0sj1rg84hqtm4&st=5d07e7us&dl=0"
+                    href="https://www.dropbox.com/scl/fi/k66yhnbs9ycbi23al7nmd/Abhishek-Raj.pdf?rlkey=o1t5ywm94rs3yhdtez8baxoey&st=09o6qe2n&e=1&dl=0"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={closeMenu}
