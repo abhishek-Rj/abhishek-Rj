@@ -17,6 +17,8 @@ import {
   SiFigma,
   SiRust,
   SiSqlite,
+  SiLinux,
+  SiCmake,
 } from "react-icons/si";
 import {
   Database,
@@ -28,6 +30,7 @@ import {
   Code,
   FileText,
   GitMerge,
+  Activity,
 } from "lucide-react";
 
 const getTechStackProps = (tech: string) => {
@@ -221,6 +224,27 @@ const getTechStackProps = (tech: string) => {
         border: "border-[#A78BFA]/30",
         bg: "bg-[#A78BFA]/10",
       };
+    case "Linux":
+      return {
+        icon: <SiLinux size={12} />,
+        color: "text-[#FCC624]",
+        border: "border-[#FCC624]/30",
+        bg: "bg-[#FCC624]/10",
+      };
+    case "CMake":
+      return {
+        icon: <SiCmake size={12} />,
+        color: "text-[#068DFF]",
+        border: "border-[#068DFF]/30",
+        bg: "bg-[#068DFF]/10",
+      };
+    case "CLI":
+      return {
+        icon: <Terminal size={12} />,
+        color: "text-[#4AF626]",
+        border: "border-[#4AF626]/30",
+        bg: "bg-[#4AF626]/10",
+      };
     default:
       return {
         icon: <Code size={12} />,
@@ -232,6 +256,14 @@ const getTechStackProps = (tech: string) => {
 };
 
 const projects = [
+  {
+    title: "ProcWatch",
+    link: "github.com/abhishek-Rj/ProcWatch",
+    icon: <Activity className="w-5 h-5" />,
+    description:
+      "A user-space Linux process health and resource monitor written in modern C++17. Samples target processes to monitor RSS memory, thread counts, and open file descriptors with drift-free steady clocks, anomaly detection alerts, and dual table or NDJSON output.",
+    stack: ["C++", "Linux", "CLI", "CMake"],
+  },
   {
     title: "CollabNote",
     link: "github.com/abhishek-Rj/collabnote",
