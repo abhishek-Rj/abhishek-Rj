@@ -7,7 +7,7 @@ interface BentoGridProps {
 
 export const BentoGrid: React.FC<BentoGridProps> = ({ children, className = '' }) => {
     return (
-        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[250px] relative z-0 ${className}`}>
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[minmax(220px,auto)] md:auto-rows-[250px] relative ${className}`}>
             {children}
         </div>
     );

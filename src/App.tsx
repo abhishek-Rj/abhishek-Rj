@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import { Github, Twitter, Linkedin } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
+import { SiX } from "react-icons/si";
 import { Header } from "./components/Header";
 import Home from "./pages/Home";
-import About from "./pages/About";
 import Experience from "./pages/Experience";
 import Projects from "./pages/Projects";
 
@@ -18,7 +18,6 @@ function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
             <Route path="/experience" element={<Experience />} />
             <Route path="/projects" element={<Projects />} />
           </Routes>
@@ -46,7 +45,7 @@ function App() {
               <Github className="w-5 h-5" />
             </a>
             <a
-              href="https://www.linkedin.com/in/abhishek-raj-7371bb214/"
+              href="https://www.linkedin.com/in/abhishek-rj0/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors"
@@ -59,7 +58,7 @@ function App() {
               rel="noopener noreferrer"
               className="hover:text-white transition-colors"
             >
-              <Twitter className="w-5 h-5" />
+              <SiX className="w-4 h-4" />
             </a>
           </div>
         </footer>

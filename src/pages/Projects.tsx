@@ -335,7 +335,7 @@ export default function Projects() {
   return (
     <div className="w-full h-full flex flex-col px-4 md:px-0 animate-in fade-in slide-in-from-bottom-4 duration-700">
       <div className="w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-8 relative z-0 mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-8 relative mt-8">
           {projects.map((proj, i) => (
             <BentoCard
               key={i}

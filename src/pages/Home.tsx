@@ -1,21 +1,12 @@
-import { useState, useEffect } from "react";
-import {
-    Github,
-    Twitter,
-    Linkedin,
-    ArrowUpRight,
-    Music,
-    Send,
-} from "lucide-react";
+import { useState, useEffect, type CSSProperties } from "react";
+import { Linkedin, ArrowUpRight, Music, Send } from "lucide-react";
+import { FaAws } from "react-icons/fa";
 import {
     SiTypescript,
     SiJavascript,
     SiCplusplus,
     SiPython,
-    SiRemix,
-    SiVite,
     SiNextdotjs,
-    SiPrisma,
     SiUnrealengine,
     SiArchlinux,
     SiNodedotjs,
@@ -26,31 +17,57 @@ import {
     SiFirebase,
     SiDocker,
     SiCloudflare,
+    SiKubernetes,
+    SiApachekafka,
+    SiRedis,
+    SiTerraform,
+    SiGithub,
+    SiX,
 } from "react-icons/si";
 
 const techIconsRow1 = [
-    { Icon: SiTypescript, name: "TypeScript" },
-    { Icon: SiCplusplus, name: "C++" },
-    { Icon: SiPython, name: "Python" },
-    { Icon: SiRemix, name: "Remix" },
-    { Icon: SiVite, name: "Vite" },
-    { Icon: SiJavascript, name: "JavaScript" },
-    { Icon: SiNextdotjs, name: "Next.js" },
-    { Icon: SiPrisma, name: "Prisma" },
-    { Icon: SiUnrealengine, name: "Unreal Engine" },
+    { Icon: SiTypescript, name: "TypeScript", color: "#3178C6" },
+    { Icon: SiCplusplus, name: "C++", color: "#008CFF" },
+    { Icon: SiPython, name: "Python", color: "#3776AB" },
+    { Icon: SiJavascript, name: "JavaScript", color: "#F7DF1E" },
+    { Icon: SiNextdotjs, name: "Next.js", color: "#FFFFFF" },
+    { Icon: SiGo, name: "Go", color: "#00ADD8" },
+    { Icon: SiRust, name: "Rust", color: "#E57324" },
+    { Icon: SiNodedotjs, name: "Node.js", color: "#339933" },
+    { Icon: SiGraphql, name: "GraphQL", color: "#E10098" },
+    { Icon: SiUnrealengine, name: "Unreal Engine", color: "#FFFFFF" },
 ];
 
 const techIconsRow2 = [
-    { Icon: SiArchlinux, name: "Arch Linux" },
-    { Icon: SiNodedotjs, name: "Node.js" },
-    { Icon: SiPostgresql, name: "PostgreSQL" },
-    { Icon: SiGraphql, name: "GraphQL" },
-    { Icon: SiGo, name: "Go" },
-    { Icon: SiRust, name: "Rust" },
-    { Icon: SiFirebase, name: "Firebase" },
-    { Icon: SiDocker, name: "Docker" },
-    { Icon: SiCloudflare, name: "Cloudflare" },
+    { Icon: SiKubernetes, name: "Kubernetes", color: "#326CE5" },
+    { Icon: FaAws, name: "AWS", color: "#FF9900" },
+    { Icon: SiApachekafka, name: "Kafka", color: "#FFFFFF" },
+    { Icon: SiRedis, name: "Redis", color: "#DC382D" },
+    { Icon: SiTerraform, name: "Terraform", color: "#844FBA" },
+    { Icon: SiDocker, name: "Docker", color: "#2496ED" },
+    { Icon: SiPostgresql, name: "PostgreSQL", color: "#4169E1" },
+    { Icon: SiCloudflare, name: "Cloudflare", color: "#F38020" },
+    { Icon: SiArchlinux, name: "Arch Linux", color: "#1793D1" },
+    { Icon: SiFirebase, name: "Firebase", color: "#FFCA28" },
 ];
+
+type TechIconItem = (typeof techIconsRow1)[number];
+
+const renderTechRow = (items: TechIconItem[], prefix: string) =>
+    [...items, ...items, ...items, ...items].map((tech, i) => (
+        <div
+            key={`${prefix}-${i}`}
+            className="pr-12 flex items-center justify-center"
+        >
+            <div
+                className="opacity-50 hover:opacity-100 text-white hover:text-[var(--icon-color)] transition-all duration-300"
+                style={{ "--icon-color": tech.color } as CSSProperties}
+                title={tech.name}
+            >
+                <tech.Icon className="w-10 h-10" />
+            </div>
+        </div>
+    ));
 
 import { BentoGrid } from "../components/BentoGrid";
 import { BentoCard } from "../components/BentoCard";
@@ -59,6 +76,8 @@ import { BentoCard } from "../components/BentoCard";
 function Home() {
     const [youtubeData, setYoutubeData] = useState<any>(null);
     const [email, setEmail] = useState<string>("");
+    const [message, setMessage] = useState<string>("");
+    const [isInputHovered, setIsInputHovered] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<
         "idle" | "success" | "error"
@@ -85,7 +104,10 @@ function Home() {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({ email }),
+                    body: JSON.stringify({
+                        email,
+                        message: message.trim() || undefined,
+                    }),
                 },
             );
 
@@ -94,6 +116,7 @@ function Home() {
             if (res.ok && data.success) {
                 setSubmitStatus("success");
                 setEmail("");
+                setMessage("");
             } else {
                 setSubmitStatus("error");
             }
@@ -116,7 +139,7 @@ function Home() {
                 if (!apiKey) return;
 
                 const res = await fetch(
-                    `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=Kanye%20West%20Flashing%20Lights%20Alternate%20Intro%20prod.%20OCEVN&key=${apiKey}`,
+                    `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=Justice%20Neverender%20feat.%20Tame%20Impala&key=${apiKey}`,
                 );
                 const data = await res.json();
 
@@ -130,10 +153,24 @@ function Home() {
 
         fetchMusic();
     }, []);
+    const inputHoverHandlers = {
+        onMouseEnter: () => setIsInputHovered(true),
+        onMouseLeave: () => setIsInputHovered(false),
+    };
+
+    const inputFieldClass =
+        "w-full bg-[#1c1c1c] border border-white/10 rounded-xl px-4 text-white placeholder:text-zinc-600 hover:bg-[#262626] hover:border-[var(--invert-bg)]/60 focus:bg-[#262626] focus:border-[var(--invert-bg)] focus:outline-none focus:ring-2 focus:ring-[var(--invert-bg)]/20 transition-all font-supply text-sm";
+
+    const now = new Date();
+    const currentMonth = now
+        .toLocaleString("en-US", { month: "short" })
+        .toUpperCase();
+    const currentDay = now.getDate();
+
     return (
         <BentoGrid>
             {/* Hero / Bio Card */}
-            <BentoCard className="row-span-2 md:col-span-2 md:row-span-2 p-8 flex flex-col justify-between group">
+            <BentoCard className="md:col-span-2 md:row-span-2 p-6 md:p-8 flex flex-col justify-between group">
                 <div>
                     <div className="w-16 h-16 rounded-full bg-zinc-800 border border-white/10 overflow-hidden mb-6 filter">
                         <img
@@ -146,11 +183,11 @@ function Home() {
                         Hi, I'm Abhishek Raj.
                     </h1>
                     <p className="text-zinc-400 group-hover:text-[var(--invert-text)] opacity-90 transition-colors text-xs md:text-sm leading-relaxed tracking-wide text-justify">
-                        Full stack by day, low level by night, breaking things
-                        in between. I've shipped web apps, dabbled in
-                        cybersecurity, learning AI systems, spent way too many
-                        hours writing games in C++ and Unreal Engine. I just
-                        really like knowing how stuff works, all the way down.
+                        Learning and building backend systems, distributed
+                        architecture, and AI/ML. There is nothing more fun to me
+                        than breaking a system and understanding how and why
+                        things work the way they do. Transitioning my way into
+                        system and network programming. I adore computers.
                     </p>
                 </div>
                 <div className="mt-8 flex flex-wrap items-center gap-3 text-sm text-zinc-500 group-hover:text-[var(--invert-text)] opacity-90 transition-colors">
@@ -173,25 +210,26 @@ function Home() {
                     className="absolute inset-0 z-20"
                 ></a>
                 <ArrowUpRight className="absolute top-6 right-6 w-6 h-6 text-zinc-500 group-hover:text-[var(--invert-text)] transition-colors z-10" />
-                <Github className="w-16 h-16 text-white group-hover:text-[var(--invert-text)] group-hover:scale-110 transition-all duration-300 z-10" />
+                <SiGithub className="w-16 h-16 text-white group-hover:text-[var(--invert-text)] group-hover:scale-110 transition-all duration-300 z-10" />
             </BentoCard>
 
             {/* LinkedIn Card */}
             <BentoCard
-                className="bg-[#0A66C2]/10 hover:bg-[#0A66C2]/20 border-[#0A66C2]/20 p-6 flex items-center justify-center group"
+                disableHoverInversion
+                className="bg-[#0A66C2]/10 hover:bg-[#0A66C2] border-[#0A66C2]/20 hover:border-[#0A66C2] p-6 flex items-center justify-center group"
                 glowColor="rgba(10, 102, 194, 0.2)"
             >
                 <a
-                    href="https://www.linkedin.com/in/abhishek-raj-7371bb214/"
+                    href="https://www.linkedin.com/in/abhishek-rj0/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="absolute inset-0 z-20"
                 ></a>
-                <ArrowUpRight className="absolute top-6 right-6 w-6 h-6 text-[#0A66C2]/50 group-hover:text-[var(--invert-text)] transition-colors z-10" />
-                <Linkedin className="w-16 h-16 text-[#0A66C2] group-hover:scale-110 transition-all duration-300 z-10" />
+                <ArrowUpRight className="absolute top-6 right-6 w-6 h-6 text-[#0A66C2]/50 group-hover:text-white transition-colors z-10" />
+                <Linkedin className="w-16 h-16 text-[#0A66C2] group-hover:text-white group-hover:scale-110 transition-all duration-300 z-10" />
             </BentoCard>
 
-            {/* X (Twitter) Card */}
+            {/* X Card */}
             <BentoCard
                 className="bg-black/50 p-6 flex items-center justify-center group"
                 glowColor="rgba(255, 255, 255, 0.1)"
@@ -203,7 +241,7 @@ function Home() {
                     className="absolute inset-0 z-20"
                 ></a>
                 <ArrowUpRight className="absolute top-6 right-6 w-6 h-6 text-zinc-500 group-hover:text-[var(--invert-text)] transition-colors z-10" />
-                <Twitter className="w-16 h-16 text-white group-hover:text-[var(--invert-text)] group-hover:scale-110 transition-all duration-300 z-10" />
+                <SiX className="w-14 h-14 text-white group-hover:text-[var(--invert-text)] group-hover:scale-110 transition-all duration-300 z-10" />
             </BentoCard>
 
             {/* Latest Project or Post */}
@@ -292,19 +330,7 @@ function Home() {
                 <div className="w-full h-full overflow-hidden flex flex-col justify-center gap-8 py-8">
                     {/* Row 1 (Scrolling Left) */}
                     <div className="flex whitespace-nowrap animate-marquee items-center w-max">
-                        {[
-                            ...techIconsRow1,
-                            ...techIconsRow1,
-                            ...techIconsRow1,
-                            ...techIconsRow1,
-                        ].map((tech, i) => (
-                            <div
-                                key={`r1-${i}`}
-                                className="flex flex-col items-center justify-center gap-3 opacity-50 hover:opacity-100 transition-opacity pr-12"
-                            >
-                                <tech.Icon className="w-10 h-10 text-white transition-colors" />
-                            </div>
-                        ))}
+                        {renderTechRow(techIconsRow1, "r1")}
                     </div>
 
                     {/* Row 2 (Scrolling Right) */}
@@ -315,55 +341,57 @@ function Home() {
                             animationDuration: "35s",
                         }}
                     >
-                        {[
-                            ...techIconsRow2,
-                            ...techIconsRow2,
-                            ...techIconsRow2,
-                            ...techIconsRow2,
-                        ].map((tech, i) => (
-                            <div
-                                key={`r2-${i}`}
-                                className="flex flex-col items-center justify-center gap-3 opacity-50 hover:opacity-100 transition-opacity pr-12"
-                            >
-                                <tech.Icon className="w-10 h-10 text-white transition-colors" />
-                            </div>
-                        ))}
+                        {renderTechRow(techIconsRow2, "r2")}
                     </div>
                 </div>
             </BentoCard>
 
             {/* Contact Form Card */}
-            <BentoCard className="row-span-2 md:row-span-1 md:col-span-2 lg:col-span-4 p-8 flex flex-col md:flex-row gap-8 items-center bg-zinc-900/50">
-                <div className="flex-1 space-y-4">
-                    <h2 className="text-3xl font-bold text-white group-hover:text-[var(--invert-text)] transition-colors flex items-center gap-3">
+            <BentoCard
+                disableHoverInversion={isInputHovered}
+                disableHoverBorder={isInputHovered}
+                className="md:row-span-1 md:col-span-2 lg:col-span-3 p-6 flex flex-col md:flex-row gap-6 items-start md:items-center"
+            >
+                <div className="w-full md:flex-1 space-y-3">
+                    <h2
+                        className={`text-2xl md:text-3xl font-bold text-white ${!isInputHovered ? "group-hover:text-[var(--invert-text)]" : ""} transition-colors tracking-tight`}
+                    >
                         Let's create together
-                        <span className="inline-block hover:animate-[spin_1s_ease-in-out_infinite] origin-bottom-right">
-                            👋
-                        </span>
                     </h2>
-                    <p className="text-zinc-400 group-hover:text-[var(--invert-text)] opacity-90 transition-colors max-w-md">
-                        Have a project in mind or just want to say hi? Drop a
-                        message and I'll get back to you as soon as possible.
+                    <p
+                        className={`text-zinc-400 ${!isInputHovered ? "group-hover:text-[var(--invert-text)]" : ""} opacity-90 transition-colors text-xs md:text-sm leading-relaxed max-w-sm`}
+                    >
+                        Got a project in mind or just want to say hi? Drop a
+                        message.
                     </p>
                 </div>
-                <div className="flex-1 w-full max-w-sm space-y-3">
+                <div className="w-full md:flex-1 md:max-w-xs space-y-2.5">
                     <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="name@example.com"
-                        className="w-full bg-[#1c1c1c] border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all font-supply text-sm"
+                        className={`${inputFieldClass} py-2.5`}
+                        {...inputHoverHandlers}
+                    />
+                    <textarea
+                        rows={2}
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        placeholder="Leave a message..."
+                        className={`${inputFieldClass} py-2 resize-none`}
+                        {...inputHoverHandlers}
                     />
                     <button
                         onClick={handleContactSubmit}
                         disabled={isSubmitting}
-                        className={`w-full font-bold rounded-xl px-4 py-3 flex items-center justify-center gap-2 transition-colors text-sm
+                        className={`w-full font-bold rounded-xl px-4 py-2.5 flex items-center justify-center gap-2 transition-colors text-sm
               ${
                   submitStatus === "success"
                       ? "bg-green-500 text-white"
                       : submitStatus === "error"
                         ? "bg-red-500 text-white"
-                        : "bg-white text-black group-hover:bg-[var(--invert-text)] group-hover:text-[var(--invert-bg)] cursor-pointer"
+                        : `bg-white text-black ${!isInputHovered ? "group-hover:bg-[var(--invert-text)] group-hover:text-[var(--invert-bg)]" : ""} cursor-pointer`
               }
               ${isSubmitting ? "opacity-80 cursor-not-allowed bg-white text-black" : ""}
             `}
@@ -385,6 +413,41 @@ function Home() {
                         )}
                     </button>
                 </div>
+            </BentoCard>
+
+            {/* Schedule Meeting Card */}
+            <BentoCard
+                className="md:col-span-2 lg:col-span-1 p-6 flex flex-col justify-between relative group"
+                glowColor="rgba(255,255,255,0.05)"
+            >
+                <a
+                    href="https://cal.com/abhishek-raj-fpn29v/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute inset-0 z-20"
+                ></a>
+                <div className="flex justify-between items-start z-10">
+                    <div className="px-2.5 py-1 rounded-full bg-white/10 group-hover:bg-[var(--invert-text)]/10 text-[11px] font-medium text-white group-hover:text-[var(--invert-text)] transition-colors">
+                        30 Min
+                    </div>
+                    <ArrowUpRight className="w-5 h-5 text-zinc-500 group-hover:text-[var(--invert-text)] transition-colors" />
+                </div>
+                <div className="flex-1 flex items-center justify-center z-10">
+                    <div className="w-[74px] rounded-xl border border-white/15 group-hover:border-[var(--invert-text)]/25 overflow-hidden bg-white/[0.03] group-hover:bg-[var(--invert-text)]/[0.06] group-hover:scale-110 transition-all duration-300 shadow-sm">
+                        <div className="px-2 py-1 bg-white/10 group-hover:bg-[var(--invert-text)]/15 border-b border-white/10 group-hover:border-[var(--invert-text)]/15 flex items-center justify-between transition-colors">
+                            <span className="text-[9px] font-bold tracking-widest text-zinc-300 group-hover:text-[var(--invert-text)] transition-colors">
+                                {currentMonth}
+                            </span>
+                            <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_6px_rgba(34,197,94,0.8)]" />
+                        </div>
+                        <div className="py-2 flex items-center justify-center">
+                            <span className="text-2xl font-bold leading-none text-white group-hover:text-[var(--invert-text)] transition-colors">
+                                {currentDay}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <h3 className="text-base font-bold text-white group-hover:text-[var(--invert-text)] transition-colors tracking-tight text-center z-10"></h3>
             </BentoCard>
         </BentoGrid>
     );

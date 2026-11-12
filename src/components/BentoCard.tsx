@@ -5,6 +5,7 @@ interface BentoCardProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;
     glowColor?: string;
     disableHoverInversion?: boolean;
+    disableHoverBorder?: boolean;
 }
 
 export const BentoCard: React.FC<BentoCardProps> = ({
@@ -12,11 +13,12 @@ export const BentoCard: React.FC<BentoCardProps> = ({
     className = '',
     glowColor,
     disableHoverInversion = false,
+    disableHoverBorder = false,
     ...props
 }) => {
     return (
         <div
-            className={`relative group bg-[var(--card-bg)] border border-[var(--line-color)] hover:border-dashed transition-all duration-300 ${!disableHoverInversion ? 'hover:bg-[var(--invert-bg)] hover:text-[var(--invert-text)]' : ''} flex flex-col ${className}`}
+            className={`relative group bg-[var(--card-bg)] border border-[var(--line-color)] ${!disableHoverBorder ? 'hover:border-dashed' : ''} transition-all duration-300 ${!disableHoverInversion ? 'hover:bg-[var(--invert-bg)] hover:text-[var(--invert-text)]' : ''} flex flex-col ${className}`}
             {...props}
         >
             {/* Solid backing to ensure transparent custom backgrounds don't reveal lines beneath */}

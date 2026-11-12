@@ -251,6 +251,7 @@ const experiences = [
     ),
     bullets: [
       "Specialized in training and fine-tuning AI agents using low-level system prompts and deep architectural context.",
+      "Engineered verifiable evaluation tasks in <strong class='text-white font-bold'>Python</strong> to benchmark agent reasoning and tool execution.",
       "Tested multi-agent capabilities across varied <strong class='text-white font-bold'>Linux</strong> environments to establish reliable and secure testing domains.",
       "Automated complex server operations by expanding proficiency in <strong class='text-white font-bold'>Bash</strong> scripting and <strong class='text-white font-bold'>Docker</strong> containerization.",
     ],
@@ -273,6 +274,7 @@ const experiences = [
       "Engineered a specialized <strong class='text-white font-bold'>Shopify</strong> plugin to combat multi-billion dollar return fraud for e-commerce retailers.",
       "Developed an AI-driven demeanor metrics system using <strong class='text-white font-bold'>Python</strong> and <strong class='text-white font-bold'>LLMs</strong> to accurately assess customer risk profiles.",
       "Integrated <strong class='text-white font-bold'>Webhooks</strong> with a <strong class='text-white font-bold'>Remix.js</strong> and <strong class='text-white font-bold'>GraphQL</strong> frontend, backed by a scalable <strong class='text-white font-bold'>Postgres</strong> database to empower automated workflows.",
+      "Architected automated merchant alert pipelines and real-time order screening rules to flag high-risk return patterns.",
     ],
     stack: ["Remix.js", "GraphQL", "Postgres", "Webhooks", "Python", "LLMs"],
   },
@@ -291,6 +293,7 @@ const experiences = [
       "Engineered a highly-scalable coupon and flyer aggregation platform utilized by thousands of active users across France.",
       "Architected the backend with robust multi-language support and heavy cloud optimization using <strong class='text-white font-bold'>AWS</strong>.",
       "Implemented a <strong class='text-white font-bold'>React</strong> frontend backed by <strong class='text-white font-bold'>Prisma</strong> and <strong class='text-white font-bold'>Postgres</strong>, leveraging <strong class='text-white font-bold'>DevOps</strong> pipelines to ensure sub-second delivery of local brand deals.",
+      "Built location-aware promotion indexing and search filtering to surface relevant regional offers with low query latency.",
     ],
     stack: ["React", "Prisma", "Postgres", "DevOps", "AWS"],
   },
@@ -334,10 +337,10 @@ export default function Experience() {
     <div className="w-full h-full flex flex-col px-4 md:px-0 animate-in fade-in slide-in-from-bottom-4 duration-700">
       <div className="w-full">
         {/* Timeline Container */}
-        <div className="relative pb-8 space-y-16 mt-8">
+        <div className="relative pb-8 mt-8">
           {/* Experiences Section */}
           <div className="relative">
-            <div className="space-y-10 md:space-y-16">
+            <div className="space-y-4">
               {experiences.map((exp, i) => {
                 const id = `exp-${i}`;
                 const isActive = activeId === id;

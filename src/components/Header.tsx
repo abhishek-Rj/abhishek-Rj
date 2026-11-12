@@ -3,6 +3,9 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
 
+const RESUME_URL =
+    "https://www.dropbox.com/scl/fi/djwfakjlp9jsp0zl3mcuz/Abhishek_Raj_resume.pdf?rlkey=7dvgww0kbt3rkcrcty9yhtrve&st=dq4vmpqg&dl=0";
+
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { toggleTheme, nextThemeColor } = useTheme();
@@ -19,9 +22,9 @@ export function Header() {
     else if (location.pathname === "/projects") headerTitle = "Projects";
 
     return (
-        <header className="relative px-6 py-4 z-50 bg-[var(--card-bg)] border border-[var(--line-color)] transition-colors duration-500">
+        <header className="relative px-6 py-4 bg-[var(--card-bg)] border border-[var(--line-color)] transition-colors duration-500">
             {/* Solid backing to prevent lines from showing through */}
-            <div className="absolute inset-0 bg-[var(--card-bg)] pointer-events-none z-[-1] transition-colors duration-500" />
+            <div className="absolute inset-0 bg-[var(--card-bg)] pointer-events-none z-[1] transition-colors duration-500" />
 
             {/* Infinitely extending border lines */}
             <div className="absolute inset-0 pointer-events-none z-[-2] *:bg-[var(--line-color)] *:transition-colors *:duration-500">
@@ -30,7 +33,7 @@ export function Header() {
                 <div className="absolute top-[-100vh] bottom-[-100vh] left-[-1px] w-[1px]" />
                 <div className="absolute top-[-100vh] bottom-[-100vh] right-[-1px] w-[1px]" />
             </div>
-            <div className="flex justify-between items-center">
+            <div className="relative z-[2] flex justify-between items-center">
                 <Link
                     to="/"
                     onClick={closeMenu}
@@ -59,14 +62,8 @@ export function Header() {
                     >
                         Projects
                     </Link>
-                    <Link
-                        to="/about"
-                        className={`${isActive("/about") ? "text-white font-bold" : "text-zinc-400 hover:text-white"} transition-colors duration-300`}
-                    >
-                        About
-                    </Link>
                     <a
-                        href="https://www.dropbox.com/scl/fi/k66yhnbs9ycbi23al7nmd/Abhishek-Raj.pdf?rlkey=o1t5ywm94rs3yhdtez8baxoey&st=09o6qe2n&e=1&dl=0"
+                        href={RESUME_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-zinc-400 hover:text-white transition-colors duration-300"
@@ -115,7 +112,7 @@ export function Header() {
 
             {/* Mobile Navigation Menu */}
             <div
-                className={`md:hidden absolute top-full left-0 right-0 py-4 bg-[#1c1c1c]/95 backdrop-blur-xl border border-white/10 rounded-2xl mt-4 flex flex-col items-center gap-6 transition-all duration-300 origin-top ${isMenuOpen ? "opacity-100 scale-100 visible" : "opacity-0 scale-95 invisible"}`}
+                className={`md:hidden absolute top-full left-0 right-0 z-50 py-4 bg-[#1c1c1c]/95 backdrop-blur-xl border border-white/10 rounded-2xl mt-4 flex flex-col items-center gap-6 transition-all duration-300 origin-top ${isMenuOpen ? "opacity-100 scale-100 visible" : "opacity-0 scale-95 invisible"}`}
             >
                 <Link
                     to="/"
@@ -138,15 +135,8 @@ export function Header() {
                 >
                     Projects
                 </Link>
-                <Link
-                    to="/about"
-                    onClick={closeMenu}
-                    className={`${isActive("/about") ? "text-white font-bold" : "text-zinc-400 hover:text-white"} text-lg transition-colors`}
-                >
-                    About
-                </Link>
                 <a
-                    href="https://www.dropbox.com/scl/fi/k66yhnbs9ycbi23al7nmd/Abhishek-Raj.pdf?rlkey=o1t5ywm94rs3yhdtez8baxoey&st=09o6qe2n&e=1&dl=0"
+                    href={RESUME_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={closeMenu}
