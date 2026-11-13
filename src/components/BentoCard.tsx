@@ -6,6 +6,7 @@ interface BentoCardProps extends React.HTMLAttributes<HTMLDivElement> {
     glowColor?: string;
     disableHoverInversion?: boolean;
     disableHoverBorder?: boolean;
+    disableInfiniteLines?: boolean;
 }
 
 export const BentoCard: React.FC<BentoCardProps> = ({
@@ -14,6 +15,7 @@ export const BentoCard: React.FC<BentoCardProps> = ({
     glowColor,
     disableHoverInversion = false,
     disableHoverBorder = false,
+    disableInfiniteLines = false,
     ...props
 }) => {
     return (
@@ -25,12 +27,14 @@ export const BentoCard: React.FC<BentoCardProps> = ({
             <div className="absolute inset-0 bg-[var(--card-bg)] pointer-events-none z-[-1] transition-colors duration-500" />
             
             {/* Infinitely extending border lines - solid color prevents additive brightness on overlaps */}
-            <div className="absolute inset-0 pointer-events-none z-[-2] *:bg-[var(--line-color)] *:transition-colors *:duration-500">
-                <div className="absolute top-[-1px] left-[-100vw] right-[-100vw] h-[1px]" />
-                <div className="absolute bottom-[-1px] left-[-100vw] right-[-100vw] h-[1px]" />
-                <div className="absolute top-[-100vh] bottom-[-100vh] left-[-1px] w-[1px]" />
-                <div className="absolute top-[-100vh] bottom-[-100vh] right-[-1px] w-[1px]" />
-            </div>
+            {!disableInfiniteLines && (
+                <div className="absolute inset-0 pointer-events-none z-[-2] *:bg-[var(--line-color)] *:transition-colors *:duration-500">
+                    <div className="absolute top-[-1px] left-[-100vw] right-[-100vw] h-[1px]" />
+                    <div className="absolute bottom-[-1px] left-[-100vw] right-[-100vw] h-[1px]" />
+                    <div className="absolute top-[-100vh] bottom-[-100vh] left-[-1px] w-[1px]" />
+                    <div className="absolute top-[-100vh] bottom-[-100vh] right-[-1px] w-[1px]" />
+                </div>
+            )}
             {glowColor && (
                 <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none z-0"
