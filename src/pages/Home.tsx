@@ -262,7 +262,6 @@ function Home() {
                 {/* LinkedIn Card */}
                 <BentoCard
                     disableHoverInversion
-                    disableInfiniteLines
                     className="flex-1 bg-[#0A66C2]/10 hover:bg-[#0A66C2] border-[#0A66C2]/20 hover:border-[#0A66C2] p-4 flex items-center justify-center relative group min-h-[100px]"
                     glowColor="rgba(10, 102, 194, 0.2)"
                 >
@@ -278,7 +277,6 @@ function Home() {
 
                 {/* X Card */}
                 <BentoCard
-                    disableInfiniteLines
                     className="flex-1 bg-black/50 p-4 flex items-center justify-center relative group min-h-[100px]"
                     glowColor="rgba(255, 255, 255, 0.1)"
                 >
