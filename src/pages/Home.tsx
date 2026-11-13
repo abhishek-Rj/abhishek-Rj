@@ -46,7 +46,7 @@ function LeetCodeIcon({ className = "w-16 h-16" }: { className?: string }) {
             {/* LeetCode upper bracket */}
             <path
                 d="M49.4124315,2.02335002 C51.8178981,-0.552320454 55.852269,-0.686893945 58.4234511,1.72277172 C60.9946333,4.13243738 61.1289722,8.17385083 58.7235056,10.7495213 L15.9282277,56.5728697 C11.2773659,61.551984 11.7867168,69.5737689 17.1459309,74.8291832 L36.9094236,94.2091099 C39.4255514,96.6764051 39.4686234,100.719828 37.0056277,103.240348 C34.5426319,105.760868 30.5062548,105.804016 27.990127,103.33672 L8.22654289,83.9567041 C-1.92467414,74.0021005 -2.93603527,58.0741402 6.61751533,47.846311 L49.4124315,2.02335002 Z"
-                className="fill-white group-hover:fill-[var(--invert-text)] transition-colors duration-300"
+                fill="#FFFFFF"
             />
         </svg>
     );
@@ -243,7 +243,8 @@ function Home() {
 
             {/* LeetCode Card */}
             <BentoCard
-                className="bg-[#FFA116]/10 p-6 flex items-center justify-center group"
+                disableHoverInversion
+                className="bg-[#FFA116]/10 hover:bg-[#FFA116]/20 border-[#FFA116]/20 hover:border-[#FFA116]/60 p-6 flex items-center justify-center group"
                 glowColor="rgba(255, 161, 22, 0.25)"
             >
                 <a
@@ -252,7 +253,7 @@ function Home() {
                     rel="noopener noreferrer"
                     className="absolute inset-0 z-20"
                 ></a>
-                <ArrowUpRight className="absolute top-6 right-6 w-6 h-6 text-[#FFA116]/50 group-hover:text-[var(--invert-text)] transition-colors z-10" />
+                <ArrowUpRight className="absolute top-6 right-6 w-6 h-6 text-[#FFA116]/50 group-hover:text-[#FFA116] transition-colors z-10" />
                 <LeetCodeIcon className="w-16 h-16 group-hover:scale-110 transition-transform duration-300 z-10" />
             </BentoCard>
 
