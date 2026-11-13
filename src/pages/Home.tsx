@@ -260,7 +260,8 @@ function Home() {
             <div className="flex flex-col gap-4 h-full">
                 {/* LinkedIn Card */}
                 <BentoCard
-                    className="flex-1 bg-[#0A66C2]/10 p-4 flex items-center justify-center relative group min-h-[100px]"
+                    disableHoverInversion
+                    className="flex-1 bg-[#0A66C2]/10 hover:bg-[#0A66C2] border-[#0A66C2]/20 hover:border-white/60 p-4 flex items-center justify-center relative group min-h-[100px]"
                     glowColor="rgba(10, 102, 194, 0.2)"
                 >
                     <a
@@ -269,8 +270,8 @@ function Home() {
                         rel="noopener noreferrer"
                         className="absolute inset-0 z-20"
                     ></a>
-                    <ArrowUpRight className="absolute top-3.5 right-3.5 w-4 h-4 text-[#0A66C2]/50 group-hover:text-[var(--invert-text)] transition-colors z-10" />
-                    <Linkedin className="w-8 h-8 text-[#0A66C2] group-hover:text-[var(--invert-text)] group-hover:scale-110 transition-all duration-300 z-10" />
+                    <ArrowUpRight className="absolute top-3.5 right-3.5 w-4 h-4 text-[#0A66C2]/50 group-hover:text-white transition-colors z-10" />
+                    <Linkedin className="w-8 h-8 text-[#0A66C2] group-hover:text-white group-hover:scale-110 transition-all duration-300 z-10" />
                 </BentoCard>
 
                 {/* X Card */}
