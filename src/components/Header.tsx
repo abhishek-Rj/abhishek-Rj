@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
 
 const RESUME_URL =
-    "https://www.dropbox.com/scl/fi/djwfakjlp9jsp0zl3mcuz/Abhishek_Raj_resume.pdf?rlkey=7dvgww0kbt3rkcrcty9yhtrve&st=dq4vmpqg&dl=0";
+    "https://www.dropbox.com/scl/fi/p0g6enwdqi1stsqymp18q/Abhishek-Raj_resume.pdf?rlkey=bu4jejb4475u5pbr74wq0mcr1&st=4znnenls&dl=0";
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
