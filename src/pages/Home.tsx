@@ -297,7 +297,7 @@ function Home() {
                 glowColor="rgba(255,255,255,0)"
             >
                 <a
-                    href="https://app.daily.dev/posts/M8FlKpNmU"
+                    href="https://medium.com/@abhishekr2077/understanding-qemu-architecture-kvm-integration-and-how-it-differs-from-traditional-hypervisors-08b9bc369530"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full h-full cursor-pointer"
