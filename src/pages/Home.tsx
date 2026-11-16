@@ -166,7 +166,7 @@ function Home() {
                 if (!apiKey) return;
 
                 const res = await fetch(
-                    `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=Justice%20Neverender%20feat.%20Tame%20Impala&key=${apiKey}`,
+                    `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=KMFDM%20Bait%20%26%20Switch&key=${apiKey}`,
                 );
                 const data = await res.json();
 
